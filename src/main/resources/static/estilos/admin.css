@@ -1,0 +1,94 @@
+body{
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header{
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bolder;
+    padding: 20px;
+}
+
+header div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justifiy-content: flex-end;
+}
+
+.filtrar{
+    padding: 20px;
+    background-color: lightcyan;
+    display: flex;
+    flex-direction: column;
+}
+
+ .filtrar div input{
+    margin: 0 20px 10px 0;
+ }
+
+.reservaciones{
+    padding: 0 20px 20px 20px;
+}
+
+.reservaciones table{
+    background-color: lightcyan;
+    box-shadow: 4px 10px 10px gray;
+    border-radius: 10px;
+}
+
+.reservaciones table th{
+    background-color: lightcoral;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.reservaciones table td{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.reservaciones table tr:nth-child(odd){
+    background-color: lightblue;
+}
+
+.mensaje{
+background-color: lightcoral;
+padding: 10px;
+margin: 10px;
+box-shadow: 4px 10px 10px gray;
+}
+
+form button{
+    gap: 10px;
+    padding: 10px;
+    align-self: center;
+
+    background-color: lightcoral;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid lightblue;
+    text-align: center;
+}
+
+form button:hover{
+    background-color: whitesmoke;
+    color: black;
+    border: 2px solid black;
+
+}
+
+.agregarUsuario{
+    box-shadow: 4px 10px 10px gray;
+    padding: 30px;
+    margin: 20px;
+}
+
+
+.agregarUsuario button{
+    margin-top: 10px;
+}

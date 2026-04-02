@@ -1,0 +1,89 @@
+body{
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 20px;
+}
+
+
+
+.general{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: lightblue;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 4px 10px 10px gray;
+        padding: 20px;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightblue;
+}
+
+.contenedor input{
+    margin-bottom: 10px;
+}
+
+form button{
+    margin: 10px;
+    padding: 10px;
+    width: 90%;
+    height: 30%;
+    align-self: center;
+
+    background-color: lightcoral;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid lightblue;
+    text-align: center;
+}
+
+form button:hover{
+    background-color: whitesmoke;
+    color: black;
+    border: 2px solid black;
+
+}
+
+form input:focus{
+    background-color: lightcoral;
+    color:white;
+    font-weight: bold;
+}
+
+
+#Usuario{
+    font-weight: bolder;
+    align-self: flex-start;
+}
+
+form button{
+    margin: 2px;
+    padding: 10px;
+    align-self: center;
+    width: 100px;
+    background-color: lightcoral;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid lightblue;
+    text-align: center;
+}
+
+form button:hover{
+    background-color: whitesmoke;
+    color: black;
+    border: 2px solid black;
+
+}
