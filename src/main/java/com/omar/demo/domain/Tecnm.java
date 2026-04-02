@@ -15,7 +15,7 @@ public class Tecnm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TECNM")
+    @Column(name = "TECID")
     private Integer id;
 
     @Column(name = "CORREO")

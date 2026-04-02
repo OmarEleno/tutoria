@@ -12,7 +12,7 @@ import java.time.LocalDate;
     @AllArgsConstructor
     @Data
     @Table(name = "ASISTENCIA")
-    public class Asistencia {
+    public class Asistencia{
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +25,4 @@ import java.time.LocalDate;
 
         @Column(name = "ASIFECHA")
         private LocalDate fecha;
-    }
 }

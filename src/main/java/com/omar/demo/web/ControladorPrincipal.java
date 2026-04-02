@@ -1,8 +1,6 @@
 package com.omar.demo.web;
 
-import com.omar.demo.servicio.ReservacionesService;
 import org.springframework.ui.Model;
-import com.omar.demo.servicio.UsuarioService;
 import org.springframework.security.core.userdetails.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +21,15 @@ import java.util.List;
 public class ControladorPrincipal {
 
 
+    @GetMapping("/login")
+    public String
+
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User usuarioSecurity){
         System.out.print("HAZ INICIADO SESION");
         System.out.println("No se que estoy haciendo");
+
+        return "tutorado";
     }
 
 }

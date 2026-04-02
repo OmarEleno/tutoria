@@ -18,6 +18,6 @@ public class Sesion {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn("GRUID")
+    @JoinColumn(name = "GRUID")
     private Grupo grupo;
 }

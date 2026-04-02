@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+    font-family:Helvetica, sans-serif;
+}
+
+header{
+    background-color: #193A6A;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+}
+
+header img{
+    width: 150px;
+    padding: 10px;
+}
+
+header p{
+    color: white;
+    font-size: 18px;
+}
+
+header section{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding-right: 10px;
+}
+
+header section p{
+    font-size: 18px;
+    padding: 0 15px;
+    height: 100%;
+    align-content: center;
+    border-bottom: 8px solid white;
+}
+
+header section span{
+    color: white;
+}
+
+header section p:hover{
+    background-color: white;
+    color: #193A6A;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.form, .listaAct{
+    margin: 120px 20px 20px 20px;
+    padding: 20px 40px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    box-shadow: 4px 10px 10px gray;
+}
+
+input, select{
+    width: 20%;
+    height: 4vh;
+}
+
+button{
+    background-color: #193A6A;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    border: none;
+    align-self: start;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.listaTutores{
+    margin-top: 120px;
+    box-shadow: 4px 10px 10px gray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.listaTutores form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table{
+    justify-content: center;
+    width: 70%;
+    align-self: center;
+}
+
+th{
+    background-color: #193A6A;
+    color: white;
+}
+
+table, th, td{
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
+th, td{
+    padding: 5px;
+}
+
+tr td:nth-child(3){
+    text-align: center;
+}
+
+form{
+    margin: 5px;
+}
+
+
+.busc{
+    height: 35px;
+}
+
+.busc input{
+    height: 80%;
+}
+
+.filtros{
+    display: flex;
+    gap: 20px;
+}

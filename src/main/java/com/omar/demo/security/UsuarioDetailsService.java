@@ -1,6 +1,8 @@
+/*
 package com.omar.demo.security;
 
 import com.omar.demo.dao.UsuarioRepository;
+import com.omar.demo.domain.Superior;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +23,7 @@ public class UsuarioDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(@NonNull String username) throws UsernameNotFoundException {
 
+
         Usuario usuario = usuarioRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         String rol = usuario.isAdmin() ? "ADMIN" : "USER";
         return new User(usuario.getUsername(), usuario.getPassword(), Collections.singleton(new SimpleGrantedAuthority(rol)
@@ -28,3 +31,5 @@ public class UsuarioDetailsService implements UserDetailsService {
         );
     }
 }
+
+*/

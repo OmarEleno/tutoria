@@ -1,0 +1,143 @@
+body{
+    margin: 0;
+    font-family:Helvetica, sans-serif;
+}
+
+header{
+    background-color: #193A6A;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+}
+
+header img{
+    width: 150px;
+    padding: 10px;
+}
+
+header p{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+header section{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding-right: 10px;
+}
+
+header section p{
+    font-size: 18px;
+    padding: 0 15px;
+    height: 100%;
+    align-content: center;
+    border-bottom: 8px solid white;
+}
+
+header section span{
+    color: white;
+}
+
+header section p:hover{
+    background-color: white;
+    color: #193A6A;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+input, select{
+    width: 20%;
+    height: 30px;
+}
+
+button{
+    background-color: #193A6A;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    align-self: start;
+    cursor: pointer;
+}
+
+
+.principal{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+}
+
+.primera, .formulario, .tabla{
+    /*border: 2px solid;*/
+    box-shadow: 4px 10px 10px gray;
+    padding: 20px;
+}
+
+.buscar{
+    margin-top: 120px;
+    width: 70%;
+}
+
+.formulario{
+    width: 30%;
+}
+
+.formulario form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formulario form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario form div input{
+    width: 100%;
+}
+
+.formulario form button{
+    align-self: center;
+}
+
+table{
+    border: 2px solid;
+    width: 100%;
+}
+
+.tabla{
+    width: 70%;
+}
+
+th, td{
+    padding: 5px;
+    border: 2px solid black;
+}
+
+th{
+    background-color: #193A6A;
+    color: white;
+}
+
+td:last-child{
+    display: flex;
+    justify-content: space-between;
+}
+
+td button{
+    width: 80px;
+    margin: 0 5px 0 0;
+    padding: 5px 0;
+}
