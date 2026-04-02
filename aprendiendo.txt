@@ -1,0 +1,11 @@
+APRENDIENDO A USAR GIT
+
+git init
+
+git config user.name "omarEleno"
+
+git config user.email "perezcervantesomareleno@gmail.com"
+
+git remote add origin "  https://github.com/OmarEleno/tutoria.git"
+
+git status
