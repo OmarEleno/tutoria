@@ -26,6 +26,7 @@ public class ControladorPrincipal {
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User usuarioSecurity){
         System.out.print("HAZ INICIADO SESION");
+        System.out.println("No se que estoy haciendo");
     }
 
 }

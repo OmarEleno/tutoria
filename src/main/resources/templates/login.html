@@ -1,37 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <html xmlns:th="http://www.thymeleaf.org">
-    <link rel="stylesheet" href="estilos/login.css">
-    <script src="/libs/p5.min.js"></script>
-    <!-- <script src="/libs/addons/p5.sound.js"></script> -->
-    <script src="/templates/sketch.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-<section class="principal">
-    <h1>RESERVACION DE ESPACIOS</h1>
-    <h2>Iniciar sesion</h2>
-    <form th:action="@{/login}" method="POST">
-        <label for="username">Usuario: </label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Contraseña: </label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Iniciar sesion</button>
-
-        <div th:if="${param.error}">
-            Usuario o Contraseña incorrectos
+    <section>
+        <div class="contenedor">
+            <img src="https://culiacan.ambar.tecnm.mx/auth/Logo_TecNM_Horizontal.svg" alt="logo">
+            <h2>SISTEMA DE TUTORIAS</h2>
+            <h2>CULIACÁN</h2>
+            <p>Bienvenido, ingresa tus credenciales para acceder a la plataforma</p>
+            <form action="/tutoradoVersion2.html">
+                <div class="dato">
+                    <label for="numeroControl">Número control</label>
+                    <input type="text" id="numeroControl" placeholder="Número control" required>
+                </div>
+                <div class="dato">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" placeholder="Contraseña" required>
+                </div>
+                <button type="submit">Iniciar sesión</button>
+            </form>
         </div>
-        <div th:if="${param.logout}">
-            Has cerrado sesion
-        </div>
-
-    </form>
-</section>
-
+    </section>
 </body>
 </html>

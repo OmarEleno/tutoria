@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar tutores</title>
+    <link rel="stylesheet" href="/css/consultarTutores.css">
+</head>
+<body>
+     <header>
+        <section>
+            <img src="https://culiacan.ambar.tecnm.mx/estudiantes/Logo_TecNM_Horizontal_Blanco.svg" alt="logoTec">
+            <p>Tareas</p>
+        </section>
+        <section>
+            <span>INGENIERIA EN SISTEMAS COMPUTACIONALES</span>
+            <p>Salir</p>
+        </section>
+    </header>
+    <main>
+        <section class="listaTutores">
+            <h2>Tutores</h2>
+            <form action="">
+                <div class="busc">
+                    <label for="buscador">Buscar:</label>
+                    <input type="search" id="buscador" placeholder="Google">
+                    <button tpye="submit">Enviar</button>
+                </div>
+            </form>  
+            <form action="###">
+                <div>
+                     <label for="dep">Selecciona un departamento</label>
+                    <select name="dep" id="dep">
+                        <option value="1">Departamento de Sistemas y computacion</option>
+                        <option value="2">Departamento de Metal Mecanica</option>
+                        <option value="3">Departamento de Industrial</option>
+                        <option value="4">Departamento de Bioquimica</option>
+                    </select>
+                </div> 
+                <button type="submit">Filtrar</button>
+            </form>         
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Consultar tutorados</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>EDNA ROCIO BARAJAS OLIVAS</td>
+                    <td><a href="/consultaTutoradosDescargar.html">Ver lista</a></td>
+                </tr>
+                 <tr>
+                    <td>2</td>
+                    <td>MARIA ELENA CARDENAS MOSQUEDA</td>
+                    <td><a href="/consultaTutorados.html">Ver lista</a></td>
+                </tr>
+                 <tr>
+                    <td>3</td>
+                    <td>MIRNA DEL ROSARIO QUEVEDO CAMACHO</td>
+                    <td><a href="/consultaTutorados.html">Ver lista</a></td>
+                </tr>
+                 <tr>
+                    <td>4</td>
+                    <td>MARIA LUCIA BARRON ESTRADA</td>
+                    <td><a href="/consultaTutorados.html">Ver lista</a></td>
+                </tr>
+                 <tr>
+                    <td>5</td>
+                    <td>YERATZI YAMILETH ESPINOZA LOPEZ</td>
+                    <td><a href="/consultaTutorados.html">Ver lista</a></td>
+                </tr>
+            </table>
+        </section>
+    </main>     
+</body>
+</html>

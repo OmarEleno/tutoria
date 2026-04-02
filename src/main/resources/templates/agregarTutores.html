@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar tutor</title>
+    <link rel="stylesheet" href="/css/agregar.css">
+</head>
+<body>
+     <header>
+        <section>
+            <img src="https://culiacan.ambar.tecnm.mx/estudiantes/Logo_TecNM_Horizontal_Blanco.svg" alt="logoTec">
+            <p>Principal</p>
+        </section>
+        <section>        
+            <span>COORDINACIÓN DE TUTORIAS DEPTO: SISTEMAS Y COMPUTACION</span>            
+            <p>Salir</p>
+        </section>
+    </header>
+    <main>
+        p
+        <section class="form" id="first">
+            <h2>Agrega un nuevo tutor</h2>
+            <div>
+                <label for="clave">Clave de empleado:</label>
+                <input type="text" id="clave">
+            </div>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre">
+            </div>
+            <div>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo">
+            </div>
+            <div>
+                <label for="rol">Carrera:</label>
+                <select name="rol" id="rol">
+                        <option value="1">ING. SISTEMAS COMPUTACIONALES</option>
+                    <option value="1">ING. INDUSTRIAL</option>
+                    <option value="1">ING. BIOQUIMICA</option>
+                    <option value="1">INGENIERIA ELECTRONICA</option>
+                    <option value="1">INGENIERIA MECATRONICA</option>
+                </select>
+            </div>       
+           <!--- <div class="val">
+                <label for="valida">¿Cumple con los requisitos?</label>
+                <input type="checkbox" id="valida">
+            </div> -->  
+            <button type="submit">Guardar Tutor</button>
+        </section>
+    </main>
+</body>
+</html>
