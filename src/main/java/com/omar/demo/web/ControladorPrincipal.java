@@ -22,7 +22,10 @@ public class ControladorPrincipal {
 
 
     @GetMapping("/login")
-    public String
+    public String login(){
+        return "login";
+    }
+
 
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User usuarioSecurity){
