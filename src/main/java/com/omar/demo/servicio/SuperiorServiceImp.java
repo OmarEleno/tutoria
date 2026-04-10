@@ -5,9 +5,11 @@ import com.omar.demo.domain.InstitutoTecnologico;
 import com.omar.demo.domain.Puesto;
 import com.omar.demo.domain.Superior;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SuperiorServiceImp implements SuperiorService {
 
     @Autowired

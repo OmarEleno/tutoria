@@ -4,9 +4,11 @@ import com.omar.demo.dao.ActividadRepository;
 import com.omar.demo.domain.Actividad;
 import com.omar.demo.domain.Sesion;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ActividadServiceImp implements ActividadService {
 
     @Autowired

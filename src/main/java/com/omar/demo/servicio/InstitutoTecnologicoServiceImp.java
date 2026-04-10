@@ -4,9 +4,11 @@ import com.omar.demo.dao.InstitutoTecnologicoRepository;
 import com.omar.demo.domain.InstitutoTecnologico;
 import com.omar.demo.domain.Tecnm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class InstitutoTecnologicoServiceImp implements InstitutoTecnologicoService {
 
     @Autowired

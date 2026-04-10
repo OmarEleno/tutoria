@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
     @AllArgsConstructor
     @Data
     @Table(name = "TUTOR")
-    public class Tutor {
+    public class Tutor extends Usuario {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

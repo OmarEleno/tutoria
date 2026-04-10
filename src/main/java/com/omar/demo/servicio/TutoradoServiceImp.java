@@ -4,10 +4,12 @@ import com.omar.demo.dao.TutoradoRepository;
 import com.omar.demo.domain.Carrera;
 import com.omar.demo.domain.Tutorado;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TutoradoServiceImp implements TutoradoService {
 
     @Autowired

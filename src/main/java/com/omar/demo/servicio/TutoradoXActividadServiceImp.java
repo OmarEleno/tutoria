@@ -4,7 +4,9 @@ import com.omar.demo.dao.TutoradoXActividadRepository;
 import com.omar.demo.domain.TutoradoXActividad;
 import com.omar.demo.domain.id.TutoradoXActividadId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TutoradoXActividadServiceImp implements TutoradoXActividadService {
 
     @Autowired

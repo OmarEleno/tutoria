@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Table(name = "SUPERIOR")
-public class Superior {
+public class Superior extends Usuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

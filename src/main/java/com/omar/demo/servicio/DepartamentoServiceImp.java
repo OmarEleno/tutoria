@@ -4,9 +4,11 @@ import com.omar.demo.dao.DepartamentoRepository;
 import com.omar.demo.domain.Departamento;
 import com.omar.demo.domain.InstitutoTecnologico;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DepartamentoServiceImp implements  DepartamentoService{
 
     @Autowired
