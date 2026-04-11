@@ -4,10 +4,12 @@ import com.omar.demo.dao.EvidenciaRepository;
 import com.omar.demo.domain.Actividad;
 import com.omar.demo.domain.Evidencia;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class EvidenciaServiceImp implements EvidenciaService {
 
     @Autowired

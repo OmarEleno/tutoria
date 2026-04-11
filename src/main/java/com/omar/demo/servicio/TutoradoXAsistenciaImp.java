@@ -6,9 +6,12 @@ import com.omar.demo.domain.Tutorado;
 import com.omar.demo.domain.TutoradoXAsistencia;
 import com.omar.demo.domain.id.TutoradoXAsistenciaId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class TutoradoXAsistenciaImp implements TutoradoXAsistenciaService {
 
     @Autowired

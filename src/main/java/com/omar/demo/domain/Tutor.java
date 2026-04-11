@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
     @AllArgsConstructor
     @Data
     @Table(name = "TUTOR")
-    public class Tutor {
+    public class Tutor{
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,10 @@ import lombok.NoArgsConstructor;
 
         @Column(name = "TUTORIDEMPLEADO")
         private  Integer idEmpleado;
+
+        @ManyToOne
+        @JoinColumn(name = "USUID")
+        private Usuario usuario;
 
         @ManyToOne
         @JoinColumn(name = "CARID")

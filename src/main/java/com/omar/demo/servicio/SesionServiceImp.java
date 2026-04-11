@@ -4,9 +4,11 @@ import com.omar.demo.dao.SesionRepository;
 import com.omar.demo.domain.Grupo;
 import com.omar.demo.domain.Sesion;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SesionServiceImp implements SesionService {
 
     @Autowired

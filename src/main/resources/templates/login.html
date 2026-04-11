@@ -13,14 +13,14 @@
             <h2>SISTEMA DE TUTORIAS</h2>
             <h2>CULIACÁN</h2>
             <p>Bienvenido, ingresa tus credenciales para acceder a la plataforma</p>
-            <form action="/tutoradoVersion2.html">
+            <form th:action="@{/login}" method="post">
                 <div class="dato">
                     <label for="numeroControl">Número control</label>
-                    <input type="text" id="numeroControl" placeholder="Número control" required>
+                    <input type="text" id="numeroControl" placeholder="Número control" required name="username">
                 </div>
                 <div class="dato">
                     <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" placeholder="Contraseña" required>
+                    <input type="password" id="contraseña" placeholder="Contraseña" required name="password">
                 </div>
                 <button type="submit">Iniciar sesión</button>
             </form>

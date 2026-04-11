@@ -22,10 +22,19 @@ public class ConfSeg {
         //Metodo para darle roles, login´s al proyecto
         http.authorizeHttpRequests(auth -> auth //auth es el configurador de reglas
                 //si la url es... - /** = cualquier cosa - Solo los usuarios con esa autoridad pueden entrar
-                .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                .requestMatchers("/personal/**").hasAuthority("USER")
+                        .requestMatchers("/consultor/**").hasAllAuthorities("DIRECTOR", "SUBDIRECTORACADEMICO")
+                        .requestMatchers("/director/**").hasAuthority("DIRECTOR")
+                .requestMatchers("/subdirector/**").hasAuthority("SUBDIRECTOR ACADEMICO")
+                        .requestMatchers("/jefeDepDA/**").hasAuthority("JEFE DE DEPARTAMENTO DE DESARROLLO ACADEMICO")
+                        .requestMatchers("/coorIns/**").hasAuthority("COORDINADOR INSTITUCIONAL DE TUTORIAS")
+                        .requestMatchers("/jefeDepA/**").hasAuthority("JEFE DE DEPARTAMENTO ACADEMICO")
+                        .requestMatchers("/coorDep/**").hasAuthority("COORDINADOR DEPARTAMENTAL DE TUTORIAS")
+                        .requestMatchers("/tutor/**").hasAuthority("TUTOR")
+                        .requestMatchers("/tutorado/**").hasAuthority("TUTORADO")
 
-                .requestMatchers("/login", "/estilos/**").permitAll() //Rutas publicas
+
+
+                        .requestMatchers("/login", "/css/**").permitAll() //Rutas publicas
 
                 .anyRequest().authenticated() //Las peticiones que me faltaron ocupan login pero no rol
         )

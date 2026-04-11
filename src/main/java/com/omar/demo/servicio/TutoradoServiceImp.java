@@ -3,11 +3,14 @@ package com.omar.demo.servicio;
 import com.omar.demo.dao.TutoradoRepository;
 import com.omar.demo.domain.Carrera;
 import com.omar.demo.domain.Tutorado;
+import com.omar.demo.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TutoradoServiceImp implements TutoradoService {
 
     @Autowired
@@ -36,5 +39,10 @@ public class TutoradoServiceImp implements TutoradoService {
     @Override
     public List<Tutorado> localizarPorCarrera(Carrera carrera) {
         return tutoradoRepository.findByCarrera(carrera);
+    }
+
+    @Override
+    public Tutorado localizarPorUsuario(Usuario usuario) {
+        return tutoradoRepository.findByUsuario(usuario);
     }
 }

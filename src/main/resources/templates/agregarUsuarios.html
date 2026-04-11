@@ -21,21 +21,32 @@
         p
         <section class="form">
             <h2>Agrega un nuevo usuario</h2>
+            <form th:action="@{/guardarUsuario}" method="POST">
+                <div>
+                <label for="apePat">Apellido Paterno:</label>
+                <input type="text" id="apePat" name="apePat">
+            </div>
+            <div>
+                <label for="apeMat">Apellido Materno:</label>
+                <input type="text" id="apeMat" name="apeMat">
+            </div>
             <div>
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre">
+                <input type="text" id="nombre" name="nombre">
             </div>
             <div>
                 <label for="rol">Rol:</label>
-                <select name="rol" id="rol">
-                        <option value="1">Director</option>
+                <select id="rol" name="rol">
+                        <option value="0">Director</option>
                     <option value="1">Subdirector</option>
-                    <option value="1">Coordinador Institucional de tutorias</option>
-                    <option value="1">Coordinador Departamental de tutorias</option>
-                    <option value="1">Jefe de departamento academico</option>
+                    <option value="3">Coordinador Institucional de tutorias</option>
+                    <option value="5">Coordinador Departamental de tutorias</option>
+                    <option value="2">Jefe de departamento de desarrollo academico</option>
+                    <option value="4">Jefe de departamento academico</option>
                 </select>
             </div>          
             <button type="submit">Guardar Usuario</button>
+            </form>
         </section>
     </main>
 </body>

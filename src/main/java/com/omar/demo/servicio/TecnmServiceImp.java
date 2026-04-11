@@ -3,9 +3,11 @@ package com.omar.demo.servicio;
 import com.omar.demo.dao.TecnmRepository;
 import com.omar.demo.domain.Tecnm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TecnmServiceImp implements TecnmService{
 
     @Autowired

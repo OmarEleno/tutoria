@@ -4,9 +4,11 @@ import com.omar.demo.dao.CarreraRespository;
 import com.omar.demo.domain.Carrera;
 import com.omar.demo.domain.Departamento;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CarreraServiceImp implements CarreraService{
 
     @Autowired

@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Table(name = "TUTORADO")
-public class Tutorado {
+public class Tutorado{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TUTORADONC")
     private Integer id;
+
 
     @Column(name = "TUTORADONOMBRE")
     private String nombre;
@@ -25,6 +26,10 @@ public class Tutorado {
 
     @Column(name = "TUTORADOAPEMAT")
     private String apellidoMaterno;
+
+    @ManyToOne
+    @JoinColumn(name = "USUID")
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "CARID")
