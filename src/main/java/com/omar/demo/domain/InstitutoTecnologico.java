@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 @Table(name = "INSITUTOTECNOLOGICO")
 public class InstitutoTecnologico {
 

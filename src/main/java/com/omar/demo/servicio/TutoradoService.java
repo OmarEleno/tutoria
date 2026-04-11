@@ -3,6 +3,7 @@ package com.omar.demo.servicio;
 import com.omar.demo.dao.TutoradoRepository;
 import com.omar.demo.domain.Carrera;
 import com.omar.demo.domain.Tutorado;
+import com.omar.demo.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -20,4 +21,5 @@ public interface TutoradoService {
 
     public List<Tutorado> localizarPorCarrera(Carrera carrera);
 
+    public Tutorado localizarPorUsuario(Usuario usuario);
 }

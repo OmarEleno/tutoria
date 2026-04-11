@@ -1,8 +1,6 @@
 package com.omar.demo.dao;
 
-import com.omar.demo.domain.InstitutoTecnologico;
-import com.omar.demo.domain.Puesto;
-import com.omar.demo.domain.Superior;
+import com.omar.demo.domain.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -19,4 +17,5 @@ public interface SuperiorRepository extends JpaRepository<Superior, Integer> {
 
     public List<Superior> findByInstitutoTecnologico(InstitutoTecnologico institutoTecnologico);
 
+    public Superior findByUsuario(Usuario usuario);
 }

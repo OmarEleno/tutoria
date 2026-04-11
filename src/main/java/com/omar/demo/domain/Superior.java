@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Table(name = "SUPERIOR")
-public class Superior extends Usuario{
+public class Superior{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SUPID")
     private Integer id;
+
 
     @Column(name = "SUPNOMBRE")
     private String nombre;
@@ -26,6 +27,8 @@ public class Superior extends Usuario{
     @Column(name = "SUPAPEMATERNO")
     private String apellidoMaterno;
 
+
+
     @ManyToOne
     @JoinColumn(name = "PUEID")
     private Puesto puesto;
@@ -33,4 +36,8 @@ public class Superior extends Usuario{
     @ManyToOne
     @JoinColumn(name = "ITCID")
     private InstitutoTecnologico institutoTecnologico;
+
+    @ManyToOne
+    @JoinColumn(name = "USUID")
+    private Usuario usuario;
 }

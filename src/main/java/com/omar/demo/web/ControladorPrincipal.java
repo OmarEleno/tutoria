@@ -1,13 +1,8 @@
 package com.omar.demo.web;
 
 import com.omar.demo.dao.UsuarioRepository;
-import com.omar.demo.domain.Superior;
-import com.omar.demo.domain.Tutorado;
-import com.omar.demo.domain.Usuario;
-import com.omar.demo.servicio.SuperiorService;
-import com.omar.demo.servicio.TutorService;
-import com.omar.demo.servicio.TutoradoService;
-import com.omar.demo.servicio.UsuarioService;
+import com.omar.demo.domain.*;
+import com.omar.demo.servicio.*;
 import org.springframework.ui.Model;
 import org.springframework.security.core.userdetails.User;
 import lombok.extern.slf4j.Slf4j;
@@ -37,13 +32,11 @@ public class ControladorPrincipal {
     @Autowired
     TutorService tutorService;
 
-    /*
-    @Autowired
-    UsuarioRepository usuarioRepository;
-    */
-
     @Autowired
     UsuarioService usuarioService;
+
+    @Autowired
+    InstitutoTecnologicoService institutoTecnologicoService;
 
     @GetMapping("/login")
     public String login(){
@@ -61,24 +54,84 @@ public class ControladorPrincipal {
 
         switch (rol){
             case 0:
-                return "director";
             case 1 :
-                return "director";
+                return "redirect:/consultor";
             case 2:
-                return  "director";
+                return  "redirect:/director";
             case 3:
-                return "coorInstTuto";
+                return "redirect:/coorInstTuto";
             case 4 :
-                return "director";
+                return "redirect:/director";
             case 5:
-                return "coorDepTutorias";
+                return "redirect:/coorDepTutorias";
             case 6:
-                return "tutor";
+                return "redirect:/tutor";
             case 7 :
-                return "tutoradoVersion2";
+                return "redirect:/tutorado";
         }
 
         return "/error";
     }
 
+    @GetMapping("/consultor")
+    public String consultor(@AuthenticationPrincipal User userSecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(userSecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("superior", superior);
+
+        return "director";
+    }
+
+    @GetMapping("/tutorado")
+    public String tutorado(@AuthenticationPrincipal User usersecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Tutorado tutorado = tutoradoService.localizarPorUsuario(usuario);
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("tutorado", tutorado);
+
+        System.out.print("DATOS DEL USUARIO: "+usuario);
+        System.out.print("\nDATOS DEL TUTORADO: "+tutorado);
+
+        return "tutoradoVersion2";
+    }
+
+    @GetMapping("/coorInstTuto")
+    public String coorInstTuto(@AuthenticationPrincipal User usersecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("superior", superior);
+
+        return "coorInstTuto";
+    }
+
+    @PostMapping("/agregarUsuario")
+    public String agregarUsuario(@AuthenticationPrincipal User usersecurity){
+
+        return "agregarUsuarios";
+    }
+
+    @PostMapping("/guardarUsuario")
+    public String guardarUsuario(@AuthenticationPrincipal User usersecurity, @RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String rol){
+        Usuario usuario = new Usuario();
+        usuario.setApeMat(apePat);
+        usuario.setApeMat(apeMat);
+        usuario.setNombre(nombre);
+        usuario.setRol((Integer.parseInt(rol)));
+        usuario.setNombreUsuario(nombre.substring(0, 4));
+        usuario.setPassword("12345");
+        usuarioService.guardarUsuario(usuario);
+        System.out.println("\nUsuario: "+usuario.getNombreUsuario()+ "\nContraseña: "+usuario.getPassword());
+
+        Superior superior = new Superior();
+        superior.setUsuario(usuario);
+        superior.set
+
+        InstitutoTecnologico institutoTecnologico2 = InstitutoTecnologicoService
+
+        return "redirect:/coorInstTuto";
+    }
 }

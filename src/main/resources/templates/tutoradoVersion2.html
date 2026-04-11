@@ -21,12 +21,16 @@
         <section class="identificacion">
             <img src="https://culiacan.ambar.tecnm.mx/estudiantes/defaultImage.png" alt="foto perfil">
             <article>
-                <p>OMAR ELENO PEREZ CERVANTES</p>
-                <p>25170284 - L25170284@CULIACAN.TECNM.MX</p>
+                <p>
+                <span th:text="${usuario.nombre}">Nombre del tutorado</span>
+                <span th:text="${usuario.apePat}">apellido paterno</span>
+                    <span th:text="${usuario.apeMat}">apellido materno</span>
+                </p>
+                <!--<p>25170284 - L25170284@CULIACAN.TECNM.MX</p>-->
                 <p id="titulo">Carrera</p>
-                <p>ING. SIST. COMP.</p>
-                <p id="titulo">Semestre</p>
-                <p>2</p>
+                <p th:text="${tutorado.carrera.nombre}">Carrera</p>
+                <!--<p id="titulo">Semestre</p>
+                <p>2</p>-->
             </article>
         </section>
         <section class="tareas">

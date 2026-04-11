@@ -22,13 +22,17 @@
             <img src="https://culiacan.ambar.tecnm.mx/estudiantes/defaultImage.png" alt="foto perfil">
             <article>
                 <p id="titulo">Coordinador Institucional de Tutorias</p>
-                <p>FULANA DE TAL</p>
-                <p id="titulo">Contacto</p>
-                <p>19170284 - L19170284@CULIACAN.TECNM.MX</p>
+                <p>
+                  <span th:text="${usuario.nombre}">Nombre del usuario</span>
+                    <span th:text="${usuario.apePat}">apellido paterno</span>
+                    <span th:text="${usuario.apeMat}">apellido materno</span>
+                </p>
+               <!-- <p id="titulo">Contacto</p>
+                <p>19170284 - L19170284@CULIACAN.TECNM.MX</p>-->
             </article>
         </section>
         <section class="cuerpo">
-            <form action="/agregarUsuarios.html">
+            <form th:action="@{/agregarUsuario}" method="POST">
                 <button type="submit">Agregar usuario</button>
             </form>
             <form action="/agregarActividad.html">

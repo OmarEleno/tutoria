@@ -15,4 +15,9 @@ public class UsuarioServiceImp implements UsuarioService {
     public Usuario localizarPorNombreDeUsuario(String nombreUsuario) {
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
     }
+
+    @Override
+    public Usuario guardarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
 }

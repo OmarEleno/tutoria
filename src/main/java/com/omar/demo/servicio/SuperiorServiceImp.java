@@ -1,9 +1,7 @@
 package com.omar.demo.servicio;
 
 import com.omar.demo.dao.SuperiorRepository;
-import com.omar.demo.domain.InstitutoTecnologico;
-import com.omar.demo.domain.Puesto;
-import com.omar.demo.domain.Superior;
+import com.omar.demo.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +41,10 @@ public class SuperiorServiceImp implements SuperiorService {
     @Override
     public List<Superior> localizarPorInstitutoTecnologico(InstitutoTecnologico institutoTecnologico) {
         return superiorRepository.findByInstitutoTecnologico(institutoTecnologico);
+    }
+
+    @Override
+    public Superior localizarPorUsuario(Usuario usuario) {
+        return superiorRepository.findByUsuario(usuario);
     }
 }
