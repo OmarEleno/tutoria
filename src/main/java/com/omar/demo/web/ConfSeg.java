@@ -22,7 +22,8 @@ public class ConfSeg {
         //Metodo para darle roles, login´s al proyecto
         http.authorizeHttpRequests(auth -> auth //auth es el configurador de reglas
                 //si la url es... - /** = cualquier cosa - Solo los usuarios con esa autoridad pueden entrar
-                        .requestMatchers("/consultor/**").hasAllAuthorities("DIRECTOR", "SUBDIRECTORACADEMICO")
+                        .requestMatchers("/consultor/**").hasAnyAuthority("DIRECTOR", "SUBDIRECTOR ACADEMICO")
+                        .requestMatchers("/consultor/**").hasAllAuthorities("DIRECTOR", "SUBDIRECTOR ACADEMICO")
                         .requestMatchers("/director/**").hasAuthority("DIRECTOR")
                 .requestMatchers("/subdirector/**").hasAuthority("SUBDIRECTOR ACADEMICO")
                         .requestMatchers("/jefeDepDA/**").hasAuthority("JEFE DE DEPARTAMENTO DE DESARROLLO ACADEMICO")
