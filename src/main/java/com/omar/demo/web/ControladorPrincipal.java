@@ -38,6 +38,9 @@ public class ControladorPrincipal {
     @Autowired
     InstitutoTecnologicoService institutoTecnologicoService;
 
+    @Autowired
+    PuestoService puestoService;
+
     @GetMapping("/login")
     public String login(){
         System.out.println("Se entro al login");
@@ -55,6 +58,7 @@ public class ControladorPrincipal {
         switch (rol){
             case 0:
             case 1 :
+                System.out.println("Eres consultor?");
                 return "redirect:/consultor";
             case 2:
                 return  "redirect:/director";
@@ -69,12 +73,13 @@ public class ControladorPrincipal {
             case 7 :
                 return "redirect:/tutorado";
         }
-
+        System.out.println("Nop");
         return "/error";
     }
 
     @GetMapping("/consultor")
     public String consultor(@AuthenticationPrincipal User userSecurity, Model model){
+        System.out.println("BIENVENIDO AL SISTEMA DE CONSULTAS");
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(userSecurity.getUsername());
         Superior superior = superiorService.localizarPorUsuario(usuario);
         model.addAttribute("usuario", usuario);
@@ -126,11 +131,14 @@ public class ControladorPrincipal {
         usuarioService.guardarUsuario(usuario);
         System.out.println("\nUsuario: "+usuario.getNombreUsuario()+ "\nContraseña: "+usuario.getPassword());
 
+        InstitutoTecnologico institutoTecnologico = institutoTecnologicoService.lozalizarPorId(1);
+        Puesto puesto = puestoService.localizarPorId(usuario.getRol());
+
         Superior superior = new Superior();
         superior.setUsuario(usuario);
-        superior.set
-
-        InstitutoTecnologico institutoTecnologico2 = InstitutoTecnologicoService
+        superior.setInstitutoTecnologico(institutoTecnologico);
+        superior.setPuesto(puesto);
+        superiorService.guardarSuperior(superior);
 
         return "redirect:/coorInstTuto";
     }

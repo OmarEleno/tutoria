@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Puesto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.)
     @Column(name = "PUEID")
     private Integer id;
 
