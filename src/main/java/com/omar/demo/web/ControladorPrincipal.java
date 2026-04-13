@@ -54,19 +54,17 @@ public class ControladorPrincipal {
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usuarioSecurity.getUsername());
 
         int rol = usuario.getRol();
-
+        System.out.println("TU ROL ES: "+rol);
         switch (rol){
             case 0:
             case 1 :
+            case 2:
+            case 4:
                 System.out.println("Eres consultor?");
                 return "redirect:/consultor";
-            case 2:
-                return  "redirect:/director";
             case 3:
                 return "redirect:/coorInstTuto";
-            case 4 :
-                return "redirect:/director";
-            case 5:
+                    case 5:
                 return "redirect:/coorDepTutorias";
             case 6:
                 return "redirect:/tutor";
@@ -122,8 +120,8 @@ public class ControladorPrincipal {
     @PostMapping("/guardarUsuario")
     public String guardarUsuario(@AuthenticationPrincipal User usersecurity, @RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String rol){
         Usuario usuario = new Usuario();
-        usuario.setApeMat(apePat);
         usuario.setApeMat(apeMat);
+        usuario.setApePat(apePat);
         usuario.setNombre(nombre);
         usuario.setRol((Integer.parseInt(rol)));
         usuario.setNombreUsuario(nombre.substring(0, 4));
@@ -141,5 +139,11 @@ public class ControladorPrincipal {
         superiorService.guardarSuperior(superior);
 
         return "redirect:/coorInstTuto";
+    }
+
+    @PostMapping("/salir")
+    public String salir(){
+        System.out.println("SAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        return "redirect:/login?logout";
     }
 }

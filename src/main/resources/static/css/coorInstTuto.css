@@ -25,10 +25,11 @@ header section{
     display: flex;
     gap: 40px;
     align-items: center;
+    justify-content: center;
     padding-right: 10px;
 }
 
-header section p{
+header section p, header section form{
     font-size: 18px;
     padding: 0 15px;
     height: 100%;
@@ -107,7 +108,7 @@ a{
     gap: 20px;
 }
 
-button{
+#op{
     background-color: #193A6A;
     color: white;
     border-radius: 15px;
@@ -116,4 +117,18 @@ button{
     align-self: start;
     cursor: pointer;
     width: 100%;
+}
+
+.btnSalir{
+    background-color: #193A6A;
+    font-size: 18px;
+    border: none;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.btnSalir:hover{
+    background-color: white;
+    color: #193A6A;
 }
