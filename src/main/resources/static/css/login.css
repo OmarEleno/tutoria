@@ -64,3 +64,27 @@ label{
    font-weight:bold;
    font-size: 14px;
 }
+
+.error{
+    background-color: coral;
+    border: 2px solid red;
+    color: white;
+    margin-top: 10px;
+}
+
+
+.error p{
+    font-size: 14px;
+}
+
+.salir{
+    background-color: lightgreen;
+    border: 2px solid green;
+    color: white;
+    margin-top: 10px;
+}
+
+
+.salir p{
+    font-size: 14px;
+}

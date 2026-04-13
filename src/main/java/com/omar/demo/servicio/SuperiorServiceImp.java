@@ -47,4 +47,9 @@ public class SuperiorServiceImp implements SuperiorService {
     public Superior localizarPorUsuario(Usuario usuario) {
         return superiorRepository.findByUsuario(usuario);
     }
+
+    @Override
+    public Superior guardarSuperior(Superior superior) {
+        return superiorRepository.save(superior);
+    }
 }

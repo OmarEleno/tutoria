@@ -38,6 +38,9 @@ public class ControladorPrincipal {
     @Autowired
     InstitutoTecnologicoService institutoTecnologicoService;
 
+    @Autowired
+    PuestoService puestoService;
+
     @GetMapping("/login")
     public String login(){
         System.out.println("Se entro al login");
@@ -51,30 +54,30 @@ public class ControladorPrincipal {
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usuarioSecurity.getUsername());
 
         int rol = usuario.getRol();
-
+        System.out.println("TU ROL ES: "+rol);
         switch (rol){
             case 0:
             case 1 :
-                return "redirect:/consultor";
             case 2:
-                return  "redirect:/director";
+            case 4:
+                System.out.println("Eres consultor?");
+                return "redirect:/consultor";
             case 3:
                 return "redirect:/coorInstTuto";
-            case 4 :
-                return "redirect:/director";
-            case 5:
+                    case 5:
                 return "redirect:/coorDepTutorias";
             case 6:
                 return "redirect:/tutor";
             case 7 :
                 return "redirect:/tutorado";
         }
-
+        System.out.println("Nop");
         return "/error";
     }
 
     @GetMapping("/consultor")
     public String consultor(@AuthenticationPrincipal User userSecurity, Model model){
+        System.out.println("BIENVENIDO AL SISTEMA DE CONSULTAS");
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(userSecurity.getUsername());
         Superior superior = superiorService.localizarPorUsuario(usuario);
         model.addAttribute("usuario", usuario);
@@ -117,8 +120,8 @@ public class ControladorPrincipal {
     @PostMapping("/guardarUsuario")
     public String guardarUsuario(@AuthenticationPrincipal User usersecurity, @RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String rol){
         Usuario usuario = new Usuario();
-        usuario.setApeMat(apePat);
         usuario.setApeMat(apeMat);
+        usuario.setApePat(apePat);
         usuario.setNombre(nombre);
         usuario.setRol((Integer.parseInt(rol)));
         usuario.setNombreUsuario(nombre.substring(0, 4));
@@ -126,12 +129,21 @@ public class ControladorPrincipal {
         usuarioService.guardarUsuario(usuario);
         System.out.println("\nUsuario: "+usuario.getNombreUsuario()+ "\nContraseña: "+usuario.getPassword());
 
+        InstitutoTecnologico institutoTecnologico = institutoTecnologicoService.lozalizarPorId(1);
+        Puesto puesto = puestoService.localizarPorId(usuario.getRol());
+
         Superior superior = new Superior();
         superior.setUsuario(usuario);
-        superior.set
-
-        InstitutoTecnologico institutoTecnologico2 = InstitutoTecnologicoService
+        superior.setInstitutoTecnologico(institutoTecnologico);
+        superior.setPuesto(puesto);
+        superiorService.guardarSuperior(superior);
 
         return "redirect:/coorInstTuto";
+    }
+
+    @PostMapping("/salir")
+    public String salir(){
+        System.out.println("SAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        return "redirect:/login?logout";
     }
 }

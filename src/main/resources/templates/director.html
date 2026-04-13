@@ -14,7 +14,9 @@
         </section>
         <section>
             <span>DIRECTOR DEL INSTITUTO TECNOLOGICO DE CULIACÁN</span>
-            <p>Salir</p>
+            <form th:action="@{/salir}" method="post">
+                <button type="submit" class="btnSalir">Salir</button>
+            </form>
         </section>
     </header>
     <main>
@@ -30,17 +32,17 @@
                     <span th:text="${usuario.apeMat}">apellido materno</span>
                 </p>
                 <p id="titulo">Plantel:</p>
-                <p th:text="${superior.institutoTecnologico.campus}}">plantel</p>
+                <p th:text="${superior.institutoTecnologico.campus}">plantel</p>
                 <!--<p id="titulo">Contacto</p>
                 <p>19170284 - DIRECCIONGENERAL@CULIACAN.TECNM.MX</p>-->
             </article>
         </section>
         <section class="cuerpo">
             <form action="/consultarTutores.html">
-                <button type="submit">Consultar tutorados</button>
+                <button type="submit" id="op">Consultar tutorados</button>
             </form>
             <form action="/datosEstadisticos.html">
-                <button type="submit">Consultar datos estadisticos</button>
+                <button type="submit" id="op">Consultar datos estadisticos</button>
             </form>
         </section>
     </main>

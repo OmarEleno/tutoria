@@ -24,6 +24,12 @@
                 </div>
                 <button type="submit">Iniciar sesión</button>
             </form>
+            <div class="error" th:if="${param.error}">
+                <p>Usuario y/o constrasña incorrecta</p>
+            </div>
+            <div class="salir" th:if="${param.logout}">
+                <p>Haz cerrado sesión</p>
+            </div>
         </div>
     </section>
 </body>
