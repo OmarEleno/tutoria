@@ -41,6 +41,9 @@ public class ControladorPrincipal {
     @Autowired
     PuestoService puestoService;
 
+    @Autowired
+    CarreraService carreraService;
+
     @GetMapping("/login")
     public String login(){
         System.out.println("Se entro al login");
@@ -64,7 +67,12 @@ public class ControladorPrincipal {
                 return "redirect:/consultor";
             case 3:
                 return "redirect:/coorInstTuto";
-                    case 5:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
                 return "redirect:/coorDepTutorias";
             case 6:
                 return "redirect:/tutor";
@@ -76,7 +84,7 @@ public class ControladorPrincipal {
     }
 
     @GetMapping("/consultor")
-    public String consultor(@AuthenticationPrincipal User userSecurity, Model model){
+    public String consultor(@AuthenticationPrincipal User userSecurity, Model model) {
         System.out.println("BIENVENIDO AL SISTEMA DE CONSULTAS");
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(userSecurity.getUsername());
         Superior superior = superiorService.localizarPorUsuario(usuario);
@@ -97,6 +105,8 @@ public class ControladorPrincipal {
         System.out.print("DATOS DEL USUARIO: "+usuario);
         System.out.print("\nDATOS DEL TUTORADO: "+tutorado);
 
+        String carreraMayus = tutorado.getCarrera().getNombre().toUpperCase();
+        model.addAttribute( "carreraMayus" ,carreraMayus);
         return "tutoradoVersion2";
     }
 
@@ -146,4 +156,10 @@ public class ControladorPrincipal {
         System.out.println("SAAAAAAAAAAAAAAAAAAAAAAAAAA");
         return "redirect:/login?logout";
     }
+
+    @PostMapping("/regresar")
+    public String regresar(){
+        return "redirect:/coorInstTuto";
+    }
+
 }

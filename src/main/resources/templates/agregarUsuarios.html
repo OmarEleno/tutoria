@@ -14,7 +14,9 @@
         </section>
         <section>
             <span>COORDINACIÓN INSTITUCIONAL DE TUTORIAS</span>
-            <p>Salir</p>
+            <form th:action="@{/salir}" method="post">
+                <button type="submit" class="btnSalir">Salir</button>
+            </form>
         </section>
     </header>
     <main>
@@ -40,12 +42,24 @@
                         <option value="0">Director</option>
                     <option value="1">Subdirector</option>
                     <option value="3">Coordinador Institucional de tutorias</option>
-                    <option value="5">Coordinador Departamental de tutorias</option>
+                   <!-- <option value="5">Coordinador Departamental de tutorias</option>-->
                     <option value="2">Jefe de departamento de desarrollo academico</option>
                     <option value="4">Jefe de departamento academico</option>
+
+                    <option value="10">Coordinador Departamental: Ciencias Económico-Administrativas</option>
+                    <option value="11">Coordinador Departamental: Eléctrica-Electrónica</option>
+                    <option value="12">Coordinador Departamental: Industrial</option>
+                    <option value="13">Coordinador Departamental: Ingeniería Química-Bioquímica</option>
+                    <option value="14">Coordinador Departamental: Metal-Mecánica</option>
+                    <option value="15">Coordinador Departamental: Sistemas y Computación</option>
+
+
                 </select>
-            </div>          
+            </div>
             <button type="submit">Guardar Usuario</button>
+            </form>
+            <form th:action="@{/regresar}" method="post">
+                <button type="submit">Regresar</button>
             </form>
         </section>
     </main>
