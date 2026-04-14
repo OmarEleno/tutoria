@@ -29,12 +29,17 @@ header section{
     padding-right: 10px;
 }
 
-header section p, header section form{
+header section p{
     font-size: 18px;
     padding: 0 15px;
     height: 100%;
     align-content: center;
     border-bottom: 8px solid white;
+}
+
+header section form{
+    border-bottom: 8px solid white;
+    height: 100%;
 }
 
 header section span{
@@ -122,13 +127,14 @@ a{
 .btnSalir{
     background-color: #193A6A;
     font-size: 18px;
+    padding: 0 15px;
     border: none;
     color: white;
     height: 100%;
     width: 100%;
 }
 
-.btnSalir:hover{
+header section form:hover, .btnSalir:hover{
     background-color: white;
     color: #193A6A;
 }

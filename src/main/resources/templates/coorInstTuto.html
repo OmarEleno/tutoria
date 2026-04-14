@@ -14,7 +14,9 @@
         </section>
         <section>
             <span>COORDINACIÓN INSTITUCIONAL DE TUTORIAS</span>
-            <p>Salir</p>
+            <form th:action="@{/salir}" method="post">
+                <button type="submit" class="btnSalir">Salir</button>
+            </form>
         </section>
     </header>
     <main>
@@ -33,16 +35,16 @@
         </section>
         <section class="cuerpo">
             <form th:action="@{/agregarUsuario}" method="POST">
-                <button type="submit">Agregar usuario</button>
+                <button type="submit" id="op">Agregar usuario</button>
             </form>
             <form action="/agregarActividad.html">
-                <button type="submit">Agregar actividad</button>
+                <button type="submit" id="op">Agregar actividad</button>
             </form>
             <form action="/consultarTutores.html">
-                <button type="submit">Consultar tutorados</button>
+                <button type="submit" id="op">Consultar tutorados</button>
             </form>
             <form action="/datosEstadisticos.html">
-                <button type="submit">Consultar datos estadisticos</button>
+                <button type="submit" id="op">Consultar datos estadisticos</button>
             </form>
         </section>
     </main>
