@@ -56,6 +56,24 @@ public class UsuarioDetailsService implements UserDetailsService {
             case 7 :
                 rol = "TUTORADO";
                 break;
+            case 10:
+                rol = "Coordinador Departamental: Ciencias Económico-Administrativas";
+                break;
+            case 11:
+                rol = "Coordinador Departamental: Eléctrica-Electrónica";
+                break;
+            case 12:
+                rol = "Coordinador Departamental: Industrial";
+                break;
+            case 13:
+                rol = "Coordinador Departamental: Ingeniería Química-Bioquímica";
+                break;
+            case 14:
+                rol = "Coordinador Departamental: Metal-Mecánica";
+                break;
+            case 15:
+                rol = "Coordinador Departamental: Sistemas y Computación";
+                break;
         }
 
         return new User(u.getNombreUsuario(), u.getPassword(), Collections.singleton(new SimpleGrantedAuthority(rol)

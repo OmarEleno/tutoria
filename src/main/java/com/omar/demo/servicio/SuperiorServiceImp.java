@@ -52,4 +52,9 @@ public class SuperiorServiceImp implements SuperiorService {
     public Superior guardarSuperior(Superior superior) {
         return superiorRepository.save(superior);
     }
+
+    @Override
+    public Departamento localizarPorDepartamento(Departamento departamento) {
+        return superiorRepository.findByDepartamento(departamento);
+    }
 }

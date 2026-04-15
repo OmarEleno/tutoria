@@ -44,6 +44,9 @@ public class ControladorPrincipal {
     @Autowired
     CarreraService carreraService;
 
+    @Autowired
+    DepartamentoService departamentoService;
+
     @GetMapping("/login")
     public String login(){
         System.out.println("Se entro al login");
@@ -121,14 +124,21 @@ public class ControladorPrincipal {
         return "coorInstTuto";
     }
 
-    @PostMapping("/agregarUsuario")
-    public String agregarUsuario(@AuthenticationPrincipal User usersecurity){
+    @GetMapping("/agregarUsuario")
+    public String mostrarFormulario(@AuthenticationPrincipal User usersecurity){
+        System.out.println("Entrando al GET de agregarUsuario");
+        return "agregarUsuarios";
+    }
 
+    @PostMapping  ("/agregarUsuario")
+    public String agregarUsuario(@AuthenticationPrincipal User usersecurity){
+        System.out.println("Bienvenidos a mi metodo");
         return "agregarUsuarios";
     }
 
     @PostMapping("/guardarUsuario")
-    public String guardarUsuario(@AuthenticationPrincipal User usersecurity, @RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String rol){
+    public String guardarUsuario(@AuthenticationPrincipal User usersecurity, @RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String rol, RedirectAttributes redirectAttributes){
+       System.out.println("VUELVE A ENTRAR AL METODO");
         Usuario usuario = new Usuario();
         usuario.setApeMat(apeMat);
         usuario.setApePat(apePat);
@@ -146,9 +156,39 @@ public class ControladorPrincipal {
         superior.setUsuario(usuario);
         superior.setInstitutoTecnologico(institutoTecnologico);
         superior.setPuesto(puesto);
-        superiorService.guardarSuperior(superior);
 
-        return "redirect:/coorInstTuto";
+        int departamento = -1;
+        int rolInt = usuario.getRol();
+        switch (rolInt){
+            case 10:
+                departamento = 2;
+                break;
+            case 11:
+                departamento = 3;
+                break;
+            case 12:
+                departamento = 4;
+                break;
+            case 13:
+                departamento = 5;
+                break;
+            case 14:
+                departamento = 6;
+                break;
+            case 15:
+                departamento = 2;
+                break;
+        }
+
+        if (departamento != -1) {
+            superior.setDepartamento(departamentoService.localizarPorId(departamento));
+        }
+        superiorService.guardarSuperior(superior);
+        System.out.println("Redirigete");
+        redirectAttributes.addFlashAttribute("mensajeExito", "Usuario agregado con exito");
+        System.out.println("Si se redirigio el atributo");
+
+        return "redirect:/agregarUsuario";
     }
 
     @PostMapping("/salir")
@@ -160,6 +200,26 @@ public class ControladorPrincipal {
     @PostMapping("/regresar")
     public String regresar(){
         return "redirect:/coorInstTuto";
+    }
+
+    @GetMapping("/coorDepTutorias")
+    public String coorDepTut(@AuthenticationPrincipal User usersecurity, Model model) {
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+
+        model.addAttribute("nombre", usuario.getNombre());
+        model.addAttribute("apePat", usuario.getApePat());
+        model.addAttribute("apeMat", usuario.getApeMat());
+
+        model.addAttribute("rol", superior.getPuesto().getNombre());
+
+        System.out.println("Dep: "+superior.getPuesto().getNombre());
+
+        //String deo
+        model.addAttribute( "departamento ");
+        model.addAttribute(superior);
+        model.addAttribute(usuario);
+        return "coorDepTutorias";
     }
 
 }
