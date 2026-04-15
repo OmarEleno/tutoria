@@ -17,7 +17,7 @@ public class Departamento {
     @Column(name = "DEPID")
     private Integer id;
 
-    @Column(name = "DEPNOMBBRE")
+    @Column(name = "DEPNOMBRE")
     private  String nombre;
 
     @ManyToOne

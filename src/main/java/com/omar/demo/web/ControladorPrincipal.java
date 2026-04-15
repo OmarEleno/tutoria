@@ -170,13 +170,13 @@ public class ControladorPrincipal {
                 departamento = 4;
                 break;
             case 13:
-                departamento = 5;
+                departamento = 1;
                 break;
             case 14:
-                departamento = 6;
+                departamento = 5;
                 break;
             case 15:
-                departamento = 2;
+                departamento = 6;
                 break;
         }
 
@@ -213,10 +213,10 @@ public class ControladorPrincipal {
 
         model.addAttribute("rol", superior.getPuesto().getNombre());
 
-        System.out.println("Dep: "+superior.getPuesto().getNombre());
+        System.out.println("Dep: "+superior.getDepartamento());
 
         //String deo
-        model.addAttribute( "departamento ");
+        model.addAttribute( "departamento", superior.getDepartamento());
         model.addAttribute(superior);
         model.addAttribute(usuario);
         return "coorDepTutorias";
