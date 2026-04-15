@@ -27,7 +27,9 @@ public class Superior{
     @Column(name = "SUPAPEMATERNO")
     private String apellidoMaterno;
 
-
+    @ManyToOne
+    @JoinColumn(name = "DEPID")
+    private Departamento departamento;
 
     @ManyToOne
     @JoinColumn(name = "PUEID")

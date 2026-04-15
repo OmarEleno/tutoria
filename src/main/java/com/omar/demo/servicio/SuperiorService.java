@@ -21,4 +21,6 @@ public interface SuperiorService {
     public Superior localizarPorUsuario(Usuario usuario);
 
     public Superior guardarSuperior(Superior superior);
+
+    public Departamento localizarPorDepartamento(Departamento departamento);
 }
