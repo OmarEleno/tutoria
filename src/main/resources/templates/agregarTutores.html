@@ -13,34 +13,55 @@
             <p>Principal</p>
         </section>
         <section>        
-            <span>COORDINACIÓN DE TUTORIAS DEPTO: SISTEMAS Y COMPUTACION</span>            
-            <p>Salir</p>
+            <span>COORDINACIÓN DE TUTORIAS DEPTO: SISTEMAS Y COMPUTACION</span>
+            <form th:action="@{/salir}" method="post">
+                <button type="submit" class="btnSalir">Salir</button>
+            </form>
         </section>
     </header>
     <main>
         p
         <section class="form" id="first">
-            <h2>Agrega un nuevo tutor</h2>
+            <div id="mensajeExito" th:if="${mensajeExito}">
+                <p th:text="${mensajeExito}">hola</p>
+            </div>
+            <form th:action="@{/guardarTutor}" method="post">
+                <h2>Agrega un nuevo tutor</h2>
             <div>
                 <label for="clave">Clave de empleado:</label>
-                <input type="text" id="clave">
+                <input type="text" id="clave" name="clave">
             </div>
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre">
-            </div>
-            <div>
+                <div>
+                    <label for="apePat">Apellido paterno:</label>
+                    <input type="text" id="apePat" name="apePat">
+                </div>
+                <div>
+                    <label for="apeMat">Apellido materno:</label>
+                    <input type="text" id="apeMat" name="apeMat">
+                </div>
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre">
+                </div>
+           <!-- <div>
                 <label for="correo">Correo:</label>
                 <input type="email" id="correo">
-            </div>
+            </div>-->
             <div>
                 <label for="rol">Carrera:</label>
-                <select name="rol" id="rol">
-                        <option value="1">ING. SISTEMAS COMPUTACIONALES</option>
-                    <option value="1">ING. INDUSTRIAL</option>
-                    <option value="1">ING. BIOQUIMICA</option>
-                    <option value="1">INGENIERIA ELECTRONICA</option>
-                    <option value="1">INGENIERIA MECATRONICA</option>
+                <select id="rol" name="carrera">
+                    <option value="1">ING. AMBIENTAL</option>
+                    <option value="2">ING. BIOQUIMICA</option>
+                    <option value="3">ING. ELECTRICA</option>
+                    <option value="4">ING. ELECTRONICA</option>
+                    <option value="5">ING. EN ENERGIAS RENOVABLES</option>
+                    <option value="6">ING. EN GESTION EMPRESARIAL</option>
+                    <option value="7">ING. INDUSTRIAL</option>
+                    <option value="8">ING. EN INNOVACION AGRICOLA SUSTENTABLE</option>
+                    <option value="9">ING. MECANICA</option>
+                    <option value="10">ING. MECATRONICA</option>
+                    <option value="11">ING. EN TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES</option>
+                    <option value="12">ING. EN SISTEMAS COMPUTACIONALES</option>
                 </select>
             </div>       
            <!--- <div class="val">
@@ -48,6 +69,10 @@
                 <input type="checkbox" id="valida">
             </div> -->  
             <button type="submit">Guardar Tutor</button>
+            </form>
+            <form th:action="@{/regresar}" method="post">
+                <button type="submit">Regresar</button>
+            </form>
         </section>
     </main>
 </body>

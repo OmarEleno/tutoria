@@ -199,7 +199,7 @@ public class ControladorPrincipal {
 
     @PostMapping("/regresar")
     public String regresar(){
-        return "redirect:/coorInstTuto";
+        return "redirect:/";
     }
 
     @GetMapping("/coorDepTutorias")
@@ -220,6 +220,49 @@ public class ControladorPrincipal {
         model.addAttribute(superior);
         model.addAttribute(usuario);
         return "coorDepTutorias";
+    }
+
+    @GetMapping("/altaTutor")
+    public String altaTutor(){
+
+        return "agregarTutores";
+    }
+
+    @PostMapping("/guardarTutor")
+    public String guardarTutor( RedirectAttributes redirectAttributes,@RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String carrera, @RequestParam String clave){
+        System.out.println("INTENTANDO GUARDAR TUTOR");
+        Usuario usuario = new Usuario();
+        usuario.setApeMat(apeMat);
+        usuario.setApePat(apePat);
+        usuario.setNombre(nombre);
+        usuario.setRol(6);
+        usuario.setNombreUsuario(nombre.substring(0, 4));
+        usuario.setPassword("12345");
+        usuarioService.guardarUsuario(usuario);
+        System.out.println("\nUsuario: "+usuario.getNombreUsuario()+ "\nContraseña: "+usuario.getPassword());
+
+        Carrera car = carreraService.localizarPorId(Integer.parseInt(carrera));
+
+        Tutor tutor = new Tutor();
+       tutor.setCarrera(car);
+        tutor.setUsuario(usuario);
+        tutor.setIdEmpleado(Integer.parseInt(clave));
+
+        tutorService.guardarTutor(tutor);
+
+        redirectAttributes.addFlashAttribute("mensajeExito", "Tutor dado de alta con exito");
+        return "redirect:/altaTutor";
+    }
+
+    @GetMapping("/tutor")
+    public String tutor(@AuthenticationPrincipal User usersecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Tutor tutor = tutorService.localizarPorUsuario(usuario);
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("tutor", tutor);
+        model.addAttribute("carrera", tutor.getCarrera());
+        return "tutor";
     }
 
 }

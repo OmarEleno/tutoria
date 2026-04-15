@@ -11,23 +11,38 @@
      <header>
         <section>
             <img src="https://culiacan.ambar.tecnm.mx/estudiantes/Logo_TecNM_Horizontal_Blanco.svg" alt="logoTec">
-            <p>Tareas</p>
+            <p>Principal</p>
         </section>
         <section>
             <span>INGENIERIA EN SISTEMAS COMPUTACIONALES</span>
-            <p>Salir</p>
+            <form th:action="@{/salir}" method="post">
+                <button type="submit" class="btnSalir">Salir</button>
+            </form>
         </section>
     </header>
     <div class="cuerpo">
      <section class="general">
         <article class="encabezado">
             <div class="encGrupo">
-                <h4>Nombre del tutor o tutora:  </h4>
-                <h5>MIRNA DEL ROSARIO QUEVEDO CAMACHO</h5>
+                <h4>Nombre del tutor o tutora:</h4>
+                <h5>
+
+                      <span th:text="${usuario.nombre}">
+                        Nombre
+                    </span>
+                    <span th:text="${usuario.apePat}">
+                         Apellido Paterno
+                    </span>
+                    <span th:text="${usuario.apeMat}">
+                        Apellido Materno
+                    </span>
+                </h5>
             </div>
             <div class="encGrupo">
                 <h4>Carrera:  </h4>
-                <h5>ING. EN SIST. COMPUTACIONALES</h5>
+                <h5>
+                    <span th:text="${carrera.nombre}">Carrera</span>
+                </h5>
             </div>
             <div class="encGrupo">
                 <div class="subG">

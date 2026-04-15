@@ -35,4 +35,9 @@ public class TutorServiceImp implements TutorService {
     public Tutor localizarPorUsuario(Usuario usuario) {
         return tutorRepository.findByUsuario(usuario);
     }
+
+    @Override
+    public void guardarTutor(Tutor tutor) {
+        tutorRepository.save(tutor);
+    }
 }

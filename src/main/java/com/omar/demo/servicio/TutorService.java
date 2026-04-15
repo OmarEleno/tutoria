@@ -17,4 +17,6 @@ public interface TutorService {
 
     public Tutor localizarPorUsuario(Usuario usuario);
 
+    public void guardarTutor(Tutor tutor);
+
 }
