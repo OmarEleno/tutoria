@@ -18,4 +18,6 @@ public interface SuperiorRepository extends JpaRepository<Superior, Integer> {
     public List<Superior> findByInstitutoTecnologico(InstitutoTecnologico institutoTecnologico);
 
     public Superior findByUsuario(Usuario usuario);
+
+    public Departamento findByDepartamento(Departamento departamento);
 }

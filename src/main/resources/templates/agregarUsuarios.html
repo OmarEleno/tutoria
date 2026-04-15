@@ -22,11 +22,15 @@
     <main>
         p
         <section class="form">
+            <div id="mensajeExito" th:if="${mensajeExito}">
+                <p th:text="${mensajeExito}">hola</p>
+            </div>
             <h2>Agrega un nuevo usuario</h2>
             <form th:action="@{/guardarUsuario}" method="POST">
                 <div>
                 <label for="apePat">Apellido Paterno:</label>
-                <input type="text" id="apePat" name="apePat">
+
+                <input required type="text" id="apePat" name="apePat">
             </div>
             <div>
                 <label for="apeMat">Apellido Materno:</label>
@@ -34,7 +38,7 @@
             </div>
             <div>
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
+                <input required type="text" id="nombre" name="nombre">
             </div>
             <div>
                 <label for="rol">Rol:</label>

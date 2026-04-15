@@ -13,7 +13,7 @@
             <p>Principal</p>
         </section>
         <section>
-            <span>COORDINACIÓN DE TUTORIAS DEPTO: SISTEMAS Y COMPUTACION</span>
+            <span th:text="${departamento}">Departamento</span>
             <p>Salir</p>
         </section>
     </header>
@@ -21,12 +21,18 @@
         <section class="identificacion">
             <img src="https://culiacan.ambar.tecnm.mx/estudiantes/defaultImage.png" alt="foto perfil">
             <article>
-                <p id="titulo">Coordinador Departamental de Tutorias</p>
-                <p>FULANA DE TAL</p>
+                <p id="titulo" th:text="${superior.puesto}">Rol</p>
+                <p>
+                    <span th:text="${usuario.nombre}">nombre</span>
+                    <span th:text="${usuario.apePat}">apePat</span>
+                    <span th:text="${usuario.apeMat}">apeMat</span>
+                </p>
                 <p id="titulo">Departamento</p>
-                <p>Sistemas y computacion</p>
+                <p th:text="${departamento.nombre}">Departamento</p>
+                <!--
                 <p id="titulo">Contacto</p>
                 <p>19170284 - L19170284@CULIACAN.TECNM.MX</p>
+                -->
             </article>
         </section>
         <section class="cuerpo">
