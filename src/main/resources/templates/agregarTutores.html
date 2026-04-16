@@ -12,8 +12,11 @@
             <img src="https://culiacan.ambar.tecnm.mx/estudiantes/Logo_TecNM_Horizontal_Blanco.svg" alt="logoTec">
             <p>Principal</p>
         </section>
-        <section>        
-            <span>COORDINACIÓN DE TUTORIAS DEPTO: SISTEMAS Y COMPUTACION</span>
+        <section>
+            <div>
+                <span>Departamento:</span>
+                <span th:text="${departamento.nombre}">departamento del coordinador</span>
+            </div>
             <form th:action="@{/salir}" method="post">
                 <button type="submit" class="btnSalir">Salir</button>
             </form>
@@ -50,6 +53,11 @@
             <div>
                 <label for="rol">Carrera:</label>
                 <select id="rol" name="carrera">
+                    <option th:each="c : ${carrerasDisponibles}" th:value="${c.id}">
+                        <div th:text="${c.nombre}" ></div>
+                    </option>
+                </select>
+                <!--<select id="rol" name="carrera">
                     <option value="1">ING. AMBIENTAL</option>
                     <option value="2">ING. BIOQUIMICA</option>
                     <option value="3">ING. ELECTRICA</option>
@@ -62,7 +70,7 @@
                     <option value="10">ING. MECATRONICA</option>
                     <option value="11">ING. EN TECNOLOGIAS DE LA INFORMACION Y COMUNICACIONES</option>
                     <option value="12">ING. EN SISTEMAS COMPUTACIONALES</option>
-                </select>
+                </select>-->
             </div>       
            <!--- <div class="val">
                 <label for="valida">¿Cumple con los requisitos?</label>
