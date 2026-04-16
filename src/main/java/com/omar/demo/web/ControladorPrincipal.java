@@ -223,8 +223,12 @@ public class ControladorPrincipal {
     }
 
     @GetMapping("/altaTutor")
-    public String altaTutor(){
-
+    public String altaTutor(@AuthenticationPrincipal User usersecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+        Departamento departamento = superior.getDepartamento();
+        model.addAttribute("departamento", departamento);
+        model.addAttribute("carrerasDisponibles", carreraService.localizarPorDepartamento(departamento));
         return "agregarTutores";
     }
 
