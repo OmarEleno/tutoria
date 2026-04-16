@@ -170,13 +170,13 @@ public class ControladorPrincipal {
                 departamento = 4;
                 break;
             case 13:
-                departamento = 5;
+                departamento = 1;
                 break;
             case 14:
-                departamento = 6;
+                departamento = 5;
                 break;
             case 15:
-                departamento = 2;
+                departamento = 6;
                 break;
         }
 
@@ -199,7 +199,7 @@ public class ControladorPrincipal {
 
     @PostMapping("/regresar")
     public String regresar(){
-        return "redirect:/coorInstTuto";
+        return "redirect:/";
     }
 
     @GetMapping("/coorDepTutorias")
@@ -213,13 +213,85 @@ public class ControladorPrincipal {
 
         model.addAttribute("rol", superior.getPuesto().getNombre());
 
-        System.out.println("Dep: "+superior.getPuesto().getNombre());
+        System.out.println("Dep: "+superior.getDepartamento());
 
         //String deo
-        model.addAttribute( "departamento ");
+        model.addAttribute( "departamento", superior.getDepartamento());
         model.addAttribute(superior);
         model.addAttribute(usuario);
         return "coorDepTutorias";
     }
 
+    @GetMapping("/altaTutor")
+    public String altaTutor(@AuthenticationPrincipal User usersecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+        Departamento departamento = superior.getDepartamento();
+        model.addAttribute("departamento", departamento);
+        model.addAttribute("carrerasDisponibles", carreraService.localizarPorDepartamento(departamento));
+        return "agregarTutores";
+    }
+
+    @PostMapping("/guardarTutor")
+    public String guardarTutor( RedirectAttributes redirectAttributes,@RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String carrera, @RequestParam String clave){
+        System.out.println("INTENTANDO GUARDAR TUTOR");
+        Usuario usuario = new Usuario();
+        usuario.setApeMat(apeMat);
+        usuario.setApePat(apePat);
+        usuario.setNombre(nombre);
+        usuario.setRol(6);
+        usuario.setNombreUsuario(nombre.substring(0, 4));
+        usuario.setPassword("12345");
+        usuarioService.guardarUsuario(usuario);
+        System.out.println("\nUsuario: "+usuario.getNombreUsuario()+ "\nContraseña: "+usuario.getPassword());
+
+        Carrera car = carreraService.localizarPorId(Integer.parseInt(carrera));
+
+        Tutor tutor = new Tutor();
+       tutor.setCarrera(car);
+        tutor.setUsuario(usuario);
+        tutor.setIdEmpleado(Integer.parseInt(clave));
+
+        tutorService.guardarTutor(tutor);
+
+        redirectAttributes.addFlashAttribute("mensajeExito", "Tutor dado de alta con exito");
+        return "redirect:/altaTutor";
+    }
+
+    @GetMapping("/tutor")
+    public String tutor(@AuthenticationPrincipal User usersecurity, Model model){
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Tutor tutor = tutorService.localizarPorUsuario(usuario);
+
+        Departamento departamento = tutor.getCarrera().getDepartamento();
+
+        model.addAttribute("departamento", departamento);
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("tutor", tutor);
+        model.addAttribute("carrera", tutor.getCarrera());
+        return "tutor";
+    }
+
+    @GetMapping("/altaTutorado")
+    public String altaTutorado(@AuthenticationPrincipal User usersecurity, Model model, RedirectAttributes redirectAttributes) {
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+        Departamento departamento = departamentoService.localizarPorId(superior.getDepartamento().getId());
+        List<Tutor> tutores = tutorService.localizarPorDepartamento(departamento.getId());
+        /*
+        for(int i=1; i<carrera.size(); i++){
+            tutores.addAll(tutorService.lozalizarPorCarrera(carrera.get(i)));
+        }
+        */
+        model.addAttribute("departamento", superior.getDepartamento());
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("tutores", tutores);
+        System.out.println("Departamento: "+departamento.getNombre());
+        System.out.println("aqui vienen los encontrados: ");
+        for(int i=1; i<tutores.size(); i++) {
+            System.out.println(tutores.get(i));
+
+        }
+        return "agregarTutorados";
+    }
 }

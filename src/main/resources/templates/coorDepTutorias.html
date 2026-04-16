@@ -13,22 +13,25 @@
             <p>Principal</p>
         </section>
         <section>
-            <span th:text="${departamento}">Departamento</span>
-            <p>Salir</p>
+            <div>
+                <span>Departamento: </span>
+                <span th:text="${departamento.nombre}">Departamento</span>
+            </div>
+            <form th:action="@{/salir}" method="post">
+                <button type="submit" class="btnSalir">Salir</button>
+            </form>
         </section>
     </header>
     <main>
         <section class="identificacion">
             <img src="https://culiacan.ambar.tecnm.mx/estudiantes/defaultImage.png" alt="foto perfil">
             <article>
-                <p id="titulo" th:text="${superior.puesto}">Rol</p>
+                <p id="titulo" th:text="${superior.puesto.nombre}">Rol</p>
                 <p>
                     <span th:text="${usuario.nombre}">nombre</span>
                     <span th:text="${usuario.apePat}">apePat</span>
                     <span th:text="${usuario.apeMat}">apeMat</span>
                 </p>
-                <p id="titulo">Departamento</p>
-                <p th:text="${departamento.nombre}">Departamento</p>
                 <!--
                 <p id="titulo">Contacto</p>
                 <p>19170284 - L19170284@CULIACAN.TECNM.MX</p>
@@ -36,10 +39,10 @@
             </article>
         </section>
         <section class="cuerpo">
-            <form action="/agregarTutores.html">
+            <form th:action="@{/altaTutor}">
                 <button type="submit">Alta Tutor</button>
             </form>
-            <form action="/agregarTutorados.html">
+            <form th:action="@{/altaTutorado}">
                 <button type="submit">Asignar Tutorados</button>
             </form>
             <form action="/coordDepAddTu.html">

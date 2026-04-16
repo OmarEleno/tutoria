@@ -122,6 +122,7 @@ a{
 
 .encGrupo{
     display: flex;
+    align-items: center;
 }
 
 .encGrupo h5{
@@ -277,4 +278,23 @@ button{
 .asisNumero2 input{
     height: 20px;
     width: 20px;
+}
+.btnSalir{
+    background-color: #193A6A;
+    font-size: 18px;
+    padding: 0 15px;
+    border: none;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+header section form{
+    border-bottom: 8px solid white;
+    height: 100%;
+}
+
+header section form:hover, .btnSalir:hover{
+    background-color: white;
+    color: #193A6A;
 }
