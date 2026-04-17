@@ -67,6 +67,7 @@ button{
     border: none;
     align-self: start;
     cursor: pointer;
+    margin-top: 0;
 }
 
 
@@ -140,4 +141,39 @@ td button{
     width: 80px;
     margin: 0 5px 0 0;
     padding: 5px 0;
+    cursor: pointer;
 }
+
+
+.btnSalir{
+    background-color: #193A6A;
+    font-size: 18px;
+    padding: 0 15px;
+    border: none;
+    color: white;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+header section form:hover, .btnSalir:hover{
+    background-color: white;
+    color: #193A6A;
+}
+
+header section form{
+    border-bottom: 8px solid white;
+    height: 100%;
+}
+
+#mensajeExito{
+    background-color: lightgreen;
+    border: 2px solid green;
+    color: black;
+    font-weight: bolder;
+    padding: 5px;
+    text-align: center;
+    align-self: center;
+    width: 100%;
+}
+

@@ -19,4 +19,5 @@ public interface TutorService {
 
     public void guardarTutor(Tutor tutor);
 
+    public List<Tutor> localizarPorDepartamento(Integer departamento);
 }

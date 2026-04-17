@@ -40,4 +40,9 @@ public class TutorServiceImp implements TutorService {
     public void guardarTutor(Tutor tutor) {
         tutorRepository.save(tutor);
     }
+
+    @Override
+    public List<Tutor> localizarPorDepartamento(Integer departamento) {
+        return tutorRepository.findByDepartamento(departamento);
+    }
 }

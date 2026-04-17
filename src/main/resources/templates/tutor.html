@@ -14,7 +14,7 @@
             <p>Principal</p>
         </section>
         <section>
-            <span>INGENIERIA EN SISTEMAS COMPUTACIONALES</span>
+            <span th:text="${carreraMayus}">Carrera</span>
             <form th:action="@{/salir}" method="post">
                 <button type="submit" class="btnSalir">Salir</button>
             </form>
