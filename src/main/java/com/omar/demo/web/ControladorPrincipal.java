@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -305,6 +306,20 @@ public class ControladorPrincipal {
         }
         return "agregarTutorados";
     }
+
+    @PostMapping("/buscarTutor")
+    public String buscarTutor(@RequestParam String id, RedirectAttributes redirectAttributes){
+        System.out.println("ID: "+id);
+        Tutor tutor = tutorService.lozalizarPorId(Integer.parseInt(id));
+        Usuario usuario = tutor.getUsuario();
+        System.out.println("TOSTRING:");
+        System.out.println(tutor);
+
+        redirectAttributes.addFlashAttribute("tutor", tutor);
+        redirectAttributes.addFlashAttribute("usuarioTutor", usuario);
+        return "redirect:/altaTutorado";
+    }
+
 }
 
 

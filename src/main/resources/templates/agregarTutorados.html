@@ -25,16 +25,9 @@
     <main>
         p
         <section class="buscar">
-        <form action="##" class="primera">
+        <form th:action="@{/buscarTutor}" class="primera" method="post">
             <h3>Selecciona un tutor</h3>
-             <!--<select name="rol" id="rol">
-                    <option value="1">EDNA ROCIO BARAJAS OLIVAS</option>
-                    <option value="1">MARIA ELENA CARDENAS MOSQUEDA</option>
-                    <option value="2">MIRNA DEL ROSARIO QUEVEDO CAMACHO</option>
-                    <option value="3">MARIA LUCIA BARRON ESTRADA</option>
-                    <option value="4">YERATZI YAMILETH ESPINOZA LOPEZ</option>
-                </select>-->
-                <select name="rol" id="rol">
+                <select name="id" id="rol">
                     <option th:each="t : ${tutores}" th:value="${t.id}">
                         <span  th:text="${t.usuario.nombre}"></span>
                         <span  th:text="${t.usuario.apePat}"></span>
@@ -46,7 +39,7 @@
         <div class="principal">
             <div class="formulario">
                 <h3>Agregar tutorado</h3>
-                <form action="####">
+                <form action="###">
                     <div>
                         <label for="clave">No. de Control:</label>
                         <input type="text" id="clave" required>
@@ -60,10 +53,17 @@
                         <input type="email" id="correo" required>
                     </div>      
                     <button type="submit">Registrar Tutorado</button>
-                </form> 
+                </form>
+                <form th:action="@{/regresar}" method="post">
+                    <button type="submit">Regresar</button>
+                </form>
             </div>
             <div class="tabla">
-                <h3>Tutorados Inscritos</h3>
+                <h3 th:if="${usuarioTutor}">
+                    <span th:text="${usuarioTutor.nombre}">nombre</span>
+                    <span th:text="${usuarioTutor.apePat}">apePat</span>
+                    <span th:text="${usuarioTutor.apeMat}">apeMat</span>
+                </h3>
                 <hr>
                 <h4>Total de alumnos: 25</h4>
                 <table>
