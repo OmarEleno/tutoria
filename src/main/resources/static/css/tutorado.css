@@ -148,6 +148,7 @@ a{
     color: white;
     height: 100%;
     width: 100%;
+    cursor: pointer;
 }
 
 header section form:hover, .btnSalir:hover{

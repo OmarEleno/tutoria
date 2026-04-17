@@ -263,10 +263,48 @@ public class ControladorPrincipal {
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
         Tutor tutor = tutorService.localizarPorUsuario(usuario);
 
+
+        Departamento departamento = tutor.getCarrera().getDepartamento();
+
+        model.addAttribute("departamento", departamento);
+
+        String carreraMayus = tutor.getCarrera().getNombre().toUpperCase();
+        model.addAttribute( "carreraMayus" ,carreraMayus);
+
         model.addAttribute("usuario", usuario);
         model.addAttribute("tutor", tutor);
         model.addAttribute("carrera", tutor.getCarrera());
         return "tutor";
     }
 
+
+    @GetMapping("/altaTutorado")
+    public String altaTutorado(@AuthenticationPrincipal User usersecurity, Model model, RedirectAttributes redirectAttributes) {
+        Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
+        Superior superior = superiorService.localizarPorUsuario(usuario);
+        Departamento departamento = departamentoService.localizarPorId(superior.getDepartamento().getId());
+        List<Tutor> tutores = tutorService.localizarPorDepartamento(departamento.getId());
+        List<Carrera> carreras = carreraService.localizarPorDepartamento(departamento);
+
+
+        //  tutores = tutorService.lozalizarPorCarrera(carreras.get(i));
+
+        /*
+        for(int i=1; i<carrera.size(); i++){
+            tutores.addAll(tutorService.lozalizarPorCarrera(carrera.get(i)));
+        }
+        */
+        model.addAttribute("departamento", superior.getDepartamento());
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("tutores", tutores);
+        System.out.println("Departamento: "+departamento.getNombre());
+        System.out.println("aqui vienen los encontrados: ");
+        for(int i=1; i<tutores.size(); i++) {
+            System.out.println(tutores.get(i));
+
+        }
+        return "agregarTutorados";
+    }
 }
+
+
