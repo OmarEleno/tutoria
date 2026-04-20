@@ -16,4 +16,9 @@ public class TutoradoXGrupoServiceImp implements TutoradoXGrupoService {
     public TutoradoXGrupo localizarPorId(TutoradoXGrupoId id) {
         return tutoradoXGrupoRepository.findById(id).orElseThrow(null);
     }
+
+    @Override
+    public void guardar(TutoradoXGrupo tutoradoXGrupo) {
+        tutoradoXGrupoRepository.save(tutoradoXGrupo);
+    }
 }

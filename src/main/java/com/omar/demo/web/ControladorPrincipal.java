@@ -48,6 +48,15 @@ public class ControladorPrincipal {
     @Autowired
     DepartamentoService departamentoService;
 
+    @Autowired
+    GrupoService grupoService;
+
+    @Autowired
+    TutorXGrupoService tutorXGrupoService;
+
+    @Autowired
+    TutoradoXGrupoService tutoradoXGrupoService;
+
     @GetMapping("/login")
     public String login(){
         System.out.println("Se entro al login");
@@ -228,6 +237,7 @@ public class ControladorPrincipal {
         Usuario usuario = usuarioService.localizarPorNombreDeUsuario(usersecurity.getUsername());
         Superior superior = superiorService.localizarPorUsuario(usuario);
         Departamento departamento = superior.getDepartamento();
+
         model.addAttribute("departamento", departamento);
         model.addAttribute("carrerasDisponibles", carreraService.localizarPorDepartamento(departamento));
         return "agregarTutores";
@@ -254,6 +264,15 @@ public class ControladorPrincipal {
         tutor.setIdEmpleado(Integer.parseInt(clave));
 
         tutorService.guardarTutor(tutor);
+
+        //INTENTAMOS CREAR UN GRUPO
+        Grupo grupo = new Grupo();
+        TutorXGrupo tutorXGrupo = new TutorXGrupo();
+        tutorXGrupo.setTutor(tutor);
+        tutorXGrupo.setGrupo(grupo);
+
+        grupoService.guardarGrupo(grupo);
+        tutorXGrupoService.guardar(tutorXGrupo);
 
         redirectAttributes.addFlashAttribute("mensajeExito", "Tutor dado de alta con exito");
         return "redirect:/altaTutor";
@@ -287,14 +306,6 @@ public class ControladorPrincipal {
         List<Tutor> tutores = tutorService.localizarPorDepartamento(departamento.getId());
         List<Carrera> carreras = carreraService.localizarPorDepartamento(departamento);
 
-
-        //  tutores = tutorService.lozalizarPorCarrera(carreras.get(i));
-
-        /*
-        for(int i=1; i<carrera.size(); i++){
-            tutores.addAll(tutorService.lozalizarPorCarrera(carrera.get(i)));
-        }
-        */
         model.addAttribute("departamento", superior.getDepartamento());
         model.addAttribute("usuario", usuario);
         model.addAttribute("tutores", tutores);
@@ -317,6 +328,30 @@ public class ControladorPrincipal {
 
         redirectAttributes.addFlashAttribute("tutor", tutor);
         redirectAttributes.addFlashAttribute("usuarioTutor", usuario);
+        return "redirect:/altaTutorado";
+    }
+
+    @PostMapping("/guardarTutorado")
+    public String guardarTutorado(@RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String tutorId) {
+        Usuario usuario = new Usuario();
+        Tutorado tutorado = new Tutorado();
+
+        usuario.setApePat(apePat);
+        usuario.setApeMat(apeMat);
+        usuario.setNombre(nombre);
+        usuario.setRol(7);
+        usuario.setPassword("12345");
+
+
+        tutorado.setUsuario(usuario);
+
+        Tutor tutor = tutorService.localizarPorIdEmpleado(Integer.parseInt(tutorId)).getFirst();
+
+        tutorado.setCarrera(tutor.getCarrera());
+
+        //tutoradoService.guardarTutorado(tutorado);
+        System.out.println("TUTORADO GUARDADO CON EXITO");
+        System.out.println(tutorado);
         return "redirect:/altaTutorado";
     }
 

@@ -15,6 +15,8 @@ public class TutoradoServiceImp implements TutoradoService {
 
     @Autowired
     TutoradoRepository tutoradoRepository;
+    @Autowired
+    private TutoradoService tutoradoService;
 
     @Override
     public Tutorado localizarPorId(Integer id) {
@@ -44,5 +46,10 @@ public class TutoradoServiceImp implements TutoradoService {
     @Override
     public Tutorado localizarPorUsuario(Usuario usuario) {
         return tutoradoRepository.findByUsuario(usuario);
+    }
+
+    @Override
+    public void guardarTutorado(Tutorado tutorado) {
+        tutoradoRepository.save(tutorado);
     }
 }

@@ -22,4 +22,6 @@ public interface TutoradoService {
     public List<Tutorado> localizarPorCarrera(Carrera carrera);
 
     public Tutorado localizarPorUsuario(Usuario usuario);
+
+    public void guardarTutorado(Tutorado tutorado);
 }

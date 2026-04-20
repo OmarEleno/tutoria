@@ -6,4 +6,6 @@ public interface GrupoService {
 
     public Grupo localizarPorId(Integer id);
 
+    public void guardarGrupo(Grupo grupo);
+
 }
