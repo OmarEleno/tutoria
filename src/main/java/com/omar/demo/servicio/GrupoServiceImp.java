@@ -15,4 +15,9 @@ public class GrupoServiceImp implements GrupoService {
     public Grupo localizarPorId(Integer id) {
         return grupoRepository.findById(id).orElseThrow(null);
     }
+
+    @Override
+    public void guardarGrupo(Grupo grupo) {
+        grupoRepository.save(grupo);
+    }
 }

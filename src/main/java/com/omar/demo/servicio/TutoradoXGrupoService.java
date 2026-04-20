@@ -7,4 +7,6 @@ public interface TutoradoXGrupoService {
 
     public TutoradoXGrupo localizarPorId(TutoradoXGrupoId id);
 
+    public void guardar(TutoradoXGrupo tutoradoXGrupo);
+
 }

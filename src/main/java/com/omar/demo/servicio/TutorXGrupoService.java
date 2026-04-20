@@ -7,4 +7,6 @@ import com.omar.demo.domain.id.TutorXGrupoId;
 public interface TutorXGrupoService {
 
     public TutorXGrupo localizarPorId(TutorXGrupoId id);
+
+    public void guardar(TutorXGrupo tutorXGrupo);
 }
