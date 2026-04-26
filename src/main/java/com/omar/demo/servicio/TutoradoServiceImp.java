@@ -15,8 +15,6 @@ public class TutoradoServiceImp implements TutoradoService {
 
     @Autowired
     TutoradoRepository tutoradoRepository;
-    @Autowired
-    private TutoradoService tutoradoService;
 
     @Override
     public Tutorado localizarPorId(Integer id) {

@@ -88,3 +88,27 @@ label{
 .salir p{
     font-size: 14px;
 }
+
+
+@media (max-width:768px){
+
+    body section{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+
+    p{
+        font-size: 15px;
+    }
+
+    body .contenedor{
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+}

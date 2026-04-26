@@ -18,16 +18,6 @@ public interface TutorRepository extends JpaRepository<Tutor , Integer> {
     public List<Tutor> findByCarrera(Carrera carrera);
 
     public Tutor findByUsuario(Usuario usuario);
-/* SI SIRVE ESTA
-    @Query(value = """
-    select *
-    from TUTOR t
-    where t.CARID = 12
-""",
-        nativeQuery = true
-)
-/*
- */
 @Query(value = """
   select t.TUTORID, t.TUTORIDEMPLEADO, t.CARID, t.USUID
   from TUTOR t

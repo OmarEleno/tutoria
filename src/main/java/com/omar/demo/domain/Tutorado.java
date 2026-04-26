@@ -13,10 +13,14 @@ import lombok.NoArgsConstructor;
 public class Tutorado{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TUTORADONC")
     private Integer id;
 
+    /*
+    @Column(name = "TUTORADONC")
+    private String numeroControl;
+    */
 
     @Column(name = "TUTORADONOMBRE")
     private String nombre;

@@ -24,6 +24,7 @@
     </header>
     <main>
         p
+        <!--<h2 th:text="${tutor.id}">id</h2>-->
         <section class="buscar">
         <form th:action="@{/buscarTutor}" class="primera" method="post">
             <h3>Selecciona un tutor</h3>
@@ -38,14 +39,16 @@
         </form>   
         <div class="principal">
             <div class="formulario">
-                <h3>Agregar tutorado</h3>
+                <h3>Agregar tutorado</h3><!--${tutor.idEmpleado}-->
                 <form th:action="@{/guardarTutorado}" method="post">
-                    <div>
-                        <input type="hidden" name="tutorId" th:value="${tutor.idEmpleado}">
+                    <div th:if="${usuarioTutor}">
+                        <!--<h4>Usuario:</h4>
+                        <h4 th:text="${usuarioTutor.nombre}">Tatatata</h4>-->
+                        <input type="hidden" th:value="${usuarioTutor.nombreUsuario}" name="nombreTutor">
                     </div>
                     <div>
                         <label for="clave">No. de Control:</label>
-                        <input type="text" id="clave" required>
+                        <input type="text" id="clave" required name="numControl">
                     </div>
                     <div>
                         <label for="apePat">Apellido Paterno:</label>
@@ -53,7 +56,7 @@
                     </div>
                     <div>
                         <label for="apeMat">Apellido materno:</label>
-                        <input type="apeMat" id="apeMat"  name="apePat" required>
+                        <input type="apeMat" id="apeMat"  name="apeMat">
                     </div>
 
                     <div>
@@ -86,6 +89,17 @@
                         <th>Correo</th>
                         <th>Opciones</th>
                     </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>23170284</td>
+                        <td>OMAR ELENO PEREZ CERVANTES</td>
+                        <td>L23170284@culiacan.tecnm.mx</td>
+                        <td>
+                            <button>Editar</button>
+                            <button>Eliminar</button>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>1</td>
                         <td>23170284</td>

@@ -2,6 +2,7 @@ package com.omar.demo.web;
 
 import com.omar.demo.dao.UsuarioRepository;
 import com.omar.demo.domain.*;
+import com.omar.demo.domain.id.TutorXGrupoId;
 import com.omar.demo.servicio.*;
 import org.springframework.ui.Model;
 import org.springframework.security.core.userdetails.User;
@@ -267,13 +268,15 @@ public class ControladorPrincipal {
 
         //INTENTAMOS CREAR UN GRUPO
         Grupo grupo = new Grupo();
+        //grupo.setId(tutor.getId());
+        grupoService.guardarGrupo(grupo);
+        System.out.println("GRUPO: "+grupo);
         TutorXGrupo tutorXGrupo = new TutorXGrupo();
         tutorXGrupo.setTutor(tutor);
         tutorXGrupo.setGrupo(grupo);
 
-        grupoService.guardarGrupo(grupo);
         tutorXGrupoService.guardar(tutorXGrupo);
-
+        System.out.println("SE GUARDO EL GRUPO Y TUTORXGRUPO");
         redirectAttributes.addFlashAttribute("mensajeExito", "Tutor dado de alta con exito");
         return "redirect:/altaTutor";
     }
@@ -306,33 +309,52 @@ public class ControladorPrincipal {
         List<Tutor> tutores = tutorService.localizarPorDepartamento(departamento.getId());
         List<Carrera> carreras = carreraService.localizarPorDepartamento(departamento);
 
+       /* Tutor tutor = tutorService.lozalizarPorId(1);
+
+        redirectAttributes.addFlashAttribute("tutor", tutor);
+        System.out.println(tutor);
+*/
         model.addAttribute("departamento", superior.getDepartamento());
         model.addAttribute("usuario", usuario);
         model.addAttribute("tutores", tutores);
         System.out.println("Departamento: "+departamento.getNombre());
         System.out.println("aqui vienen los encontrados: ");
-        for(int i=1; i<tutores.size(); i++) {
+        /*for(int i=1; i<tutores.size(); i++) {
             System.out.println(tutores.get(i));
 
-        }
+        }*/
+
         return "agregarTutorados";
     }
 
     @PostMapping("/buscarTutor")
     public String buscarTutor(@RequestParam String id, RedirectAttributes redirectAttributes){
+        System.out.println("SE ESTA BUSCANDO UN TUTOR");
         System.out.println("ID: "+id);
         Tutor tutor = tutorService.lozalizarPorId(Integer.parseInt(id));
         Usuario usuario = tutor.getUsuario();
         System.out.println("TOSTRING:");
         System.out.println(tutor);
 
+
+
+        //INTENTANDO PONER EL GRUPO
+        TutorXGrupo tutorXGrupo = tutorXGrupoService.localizarPorTutor(tutor).get(0);
+        Grupo grupo = grupoService.localizarPorId(tutorXGrupo.getGrupo().getId());
+
+
+
         redirectAttributes.addFlashAttribute("tutor", tutor);
         redirectAttributes.addFlashAttribute("usuarioTutor", usuario);
         return "redirect:/altaTutorado";
     }
 
+
     @PostMapping("/guardarTutorado")
-    public String guardarTutorado(@RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre, @RequestParam String tutorId) {
+    public String guardarTutorado(@RequestParam String numControl, @RequestParam String nombreTutor, @RequestParam String apePat, @RequestParam String apeMat, @RequestParam String nombre) {
+        System.out.println("SE INTENTA GUARDAR UN TUTORADO");
+        System.out.println("NOMBRE RECIBIDO: "+nombreTutor);
+
         Usuario usuario = new Usuario();
         Tutorado tutorado = new Tutorado();
 
@@ -340,18 +362,39 @@ public class ControladorPrincipal {
         usuario.setApeMat(apeMat);
         usuario.setNombre(nombre);
         usuario.setRol(7);
+        usuario.setNombreUsuario(nombre.substring(0, 4));
         usuario.setPassword("12345");
-
-
+        usuarioService.guardarUsuario(usuario);
         tutorado.setUsuario(usuario);
+        System.out.println("USUARIO CREADO::::::"+usuario);
 
-        Tutor tutor = tutorService.localizarPorIdEmpleado(Integer.parseInt(tutorId)).getFirst();
 
+        Usuario usuarioTutor = usuarioService.localizarPorNombreDeUsuario(nombreTutor);
+        System.out.println("USUARIO DEL TUTOR:::::::::::" + usuarioTutor);
+
+        Tutor tutor = tutorService.localizarPorUsuario(usuarioTutor);
+
+        System.out.println("TUTOR: "+tutor);
         tutorado.setCarrera(tutor.getCarrera());
+        tutorado.setId(Integer.parseInt(numControl));
 
-        //tutoradoService.guardarTutorado(tutorado);
+        System.out.println("TUTORADO CREADO::::::"+tutorado);
+        tutoradoService.guardarTutorado(tutorado);
         System.out.println("TUTORADO GUARDADO CON EXITO");
         System.out.println(tutorado);
+
+        //Metiedolo a un grupo
+        TutorXGrupo tutorXGrupo = tutorXGrupoService.localizarPorTutor(tutor).get(0);
+        Grupo grupo = grupoService.localizarPorId(tutorXGrupo.getGrupo().getId());
+
+
+        TutoradoXGrupo tutoradoXGrupo = new TutoradoXGrupo();
+        tutoradoXGrupo.setTutorado(tutorado);
+        tutoradoXGrupo.setGrupo(grupo);
+
+        tutoradoXGrupoService.guardar(tutoradoXGrupo);
+
+        System.out.println("SE GUARDO EN UN GRUPO: "+tutoradoXGrupo.getGrupo().getId());
         return "redirect:/altaTutorado";
     }
 
