@@ -29,6 +29,7 @@
         <form th:action="@{/buscarTutor}" class="primera" method="post">
             <h3>Selecciona un tutor</h3>
                 <select name="id" id="rol">
+                    <option hidden selected value="a">Elige un tutor</option>
                     <option th:each="t : ${tutores}" th:value="${t.id}">
                         <span  th:text="${t.usuario.nombre}"></span>
                         <span  th:text="${t.usuario.apePat}"></span>
@@ -48,20 +49,20 @@
                     </div>
                     <div>
                         <label for="clave">No. de Control:</label>
-                        <input type="text" id="clave" required name="numControl">
+                        <input type="text" id="clave" name="numControl" th:disabled="${usuarioTutor == null}">
                     </div>
                     <div>
                         <label for="apePat">Apellido Paterno:</label>
-                        <input type="apePat" id="apePat"  name="apePat" required>
+                        <input type="apePat" id="apePat"  name="apePat" th:disabled="${usuarioTutor == null}">
                     </div>
                     <div>
                         <label for="apeMat">Apellido materno:</label>
-                        <input type="apeMat" id="apeMat"  name="apeMat">
+                        <input type="apeMat" id="apeMat"  name="apeMat" th:disabled="${usuarioTutor == null}">
                     </div>
 
                     <div>
                         <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required>
+                        <input type="text" id="nombre" name="nombre" th:disabled="${usuarioTutor == null}">
                     </div>
                     <!--<div>
                         <label for="correo">Correo:</label>
@@ -73,84 +74,44 @@
                     <button type="submit">Regresar</button>
                 </form>
             </div>
-            <div class="tabla">
-                <h3 th:if="${usuarioTutor}">
+            <div class="tabla" th:if="${usuarioTutor == null}">
+                <h3>Selecciona un tutor</h3>
+            </div>
+            <div class="tabla" th:if="${usuarioTutor}">
+                <div id="mensajeExito" th:if="${mensajeExito}">
+                    <p th:text="${mensajeExito}">hola</p>
+                </div>
+                <h3>
                     <span th:text="${usuarioTutor.nombre}">nombre</span>
                     <span th:text="${usuarioTutor.apePat}">apePat</span>
                     <span th:text="${usuarioTutor.apeMat}">apeMat</span>
                 </h3>
                 <hr>
-                <h4>Total de alumnos: 25</h4>
-                <table>
+                <h4 id="datosLista">
+                    <div>
+                        Cantidad de alumnos: <span th:text="${totalTutorados}">Numero</span>
+                    </div>
+                    <div>
+                        Carrera: <span th:text="${tutor.carrera.nombre}">Numero</span>
+                    </div>
+                </h4>
+                <table th:if="${!tutorados.empty}">
                     <tr>
-                        <th>No</th>
                         <th>Número de control</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th id="nombreTabla">Nombre</th>
                         <th>Opciones</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>23170284</td>
-                        <td>OMAR ELENO PEREZ CERVANTES</td>
-                        <td>L23170284@culiacan.tecnm.mx</td>
-                        <td>
+                    <tr th:each="t: ${tutorados}">
+                        <td th:text="${t.id}">Numero de control</td>
+                        <td th:text="${t.usuario.apePat}">Apellido paterno</td>
+                        <td th:text="${t.usuario.apeMat}">Apellido materno</td>
+                        <td th:text="${t.usuario.nombre}">Nombre</td>
+                        <td id="botones">
                             <button>Editar</button>
                             <button>Eliminar</button>
                         </td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>23170284</td>
-                        <td>OMAR ELENO PEREZ CERVANTES</td>
-                        <td>L23170284@culiacan.tecnm.mx</td>
-                        <td>
-                            <button>Editar</button>
-                            <button>Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>23170284</td>
-                        <td>OMAR ELENO PEREZ CERVANTES</td>
-                        <td>L23170284@culiacan.tecnm.mx</td>
-                        <td>
-                            <button>Editar</button>
-                            <button>Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>23170284</td>
-                        <td>OMAR ELENO PEREZ CERVANTES</td>
-                        <td>L23170284@culiacan.tecnm.mx</td>
-                        <td>
-                            <button>Editar</button>
-                            <button>Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>23170284</td>
-                        <td>OMAR ELENO PEREZ CERVANTES</td>
-                        <td>L23170284@culiacan.tecnm.mx</td>
-                        <td>
-                            <button>Editar</button>
-                            <button>Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>23170284</td>
-                        <td>OMAR ELENO PEREZ CERVANTES</td>
-                        <td>L23170284@culiacan.tecnm.mx</td>
-                        <td>
-                            <button>Editar</button>
-                            <button>Eliminar</button>
-                        </td>
-                    </tr>
-                   
                 </table>
             </div>
         </div>       

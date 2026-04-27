@@ -2,6 +2,7 @@ package com.omar.demo.servicio;
 
 import com.omar.demo.dao.TutoradoRepository;
 import com.omar.demo.domain.Carrera;
+import com.omar.demo.domain.Grupo;
 import com.omar.demo.domain.Tutorado;
 import com.omar.demo.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,17 @@ public interface TutoradoService {
 
     public Tutorado localizarPorId(Integer id);
 
-    public List<Tutorado> localizarPorNombre(String nombre);
+/*    public List<Tutorado> localizarPorNombre(String nombre);
 
     public List<Tutorado> localizarPorApellidoPaterno(String apellidoPaterno);
 
     public List<Tutorado> localizarPorApellidoMaterno(String apellidoMaterno);
-
+*/
     public List<Tutorado> localizarPorCarrera(Carrera carrera);
 
     public Tutorado localizarPorUsuario(Usuario usuario);
+
+    public List<Tutorado> localizarPorGrupo(Grupo grupo);
 
     public void guardarTutorado(Tutorado tutorado);
 }

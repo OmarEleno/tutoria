@@ -21,6 +21,6 @@ public class TutorXGrupo {
 
     @Id
     @ManyToOne
-    @JoinColumn (name = "GRUPID")
+    @JoinColumn (name = "GRUID")
     private  Grupo grupo;
 }

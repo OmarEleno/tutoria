@@ -1,5 +1,6 @@
 package com.omar.demo.dao;
 
+import com.omar.demo.domain.Grupo;
 import com.omar.demo.domain.TutoradoXGrupo;
 import com.omar.demo.domain.id.TutoradoXGrupoId;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,4 +11,5 @@ public interface TutoradoXGrupoRepository extends JpaRepository<TutoradoXGrupo, 
 
     public Optional<TutoradoXGrupo> findById(TutoradoXGrupoId id);
 
+    public TutoradoXGrupo findByGrupo(Grupo grupo);
 }

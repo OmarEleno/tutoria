@@ -1,6 +1,7 @@
 package com.omar.demo.servicio;
 
 import com.omar.demo.dao.TutoradoXGrupoRepository;
+import com.omar.demo.domain.Grupo;
 import com.omar.demo.domain.TutoradoXGrupo;
 import com.omar.demo.domain.id.TutoradoXGrupoId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class TutoradoXGrupoServiceImp implements TutoradoXGrupoService {
     @Override
     public void guardar(TutoradoXGrupo tutoradoXGrupo) {
         tutoradoXGrupoRepository.save(tutoradoXGrupo);
+    }
+
+    @Override
+    public TutoradoXGrupo localizarPorGrupo(Grupo grupo) {
+        return tutoradoXGrupoRepository.findByGrupo(grupo);
     }
 }

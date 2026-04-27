@@ -20,7 +20,6 @@ public class Tutorado{
     /*
     @Column(name = "TUTORADONC")
     private String numeroControl;
-    */
 
     @Column(name = "TUTORADONOMBRE")
     private String nombre;
@@ -30,6 +29,7 @@ public class Tutorado{
 
     @Column(name = "TUTORADOAPEMAT")
     private String apellidoMaterno;
+    */
 
     @ManyToOne
     @JoinColumn(name = "USUID")

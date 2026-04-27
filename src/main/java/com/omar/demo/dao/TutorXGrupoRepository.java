@@ -14,4 +14,6 @@ public interface TutorXGrupoRepository extends JpaRepository <TutorXGrupo , Tuto
     public Optional<TutorXGrupo> findById (TutorXGrupoId id);
 
     public List<TutorXGrupo> findByTutor(Tutor tutor);
+
+
 }

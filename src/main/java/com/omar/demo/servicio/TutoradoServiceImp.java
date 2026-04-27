@@ -2,6 +2,7 @@ package com.omar.demo.servicio;
 
 import com.omar.demo.dao.TutoradoRepository;
 import com.omar.demo.domain.Carrera;
+import com.omar.demo.domain.Grupo;
 import com.omar.demo.domain.Tutorado;
 import com.omar.demo.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class TutoradoServiceImp implements TutoradoService {
         return tutoradoRepository.findById(id).orElseThrow(null);
     }
 
-    @Override
+/*    @Override
     public List<Tutorado> localizarPorNombre(String nombre) {
         return tutoradoRepository.findByNombre(nombre);
     }
@@ -35,7 +36,7 @@ public class TutoradoServiceImp implements TutoradoService {
     public List<Tutorado> localizarPorApellidoMaterno(String apellidoMaterno) {
         return tutoradoRepository.findByApellidoMaterno(apellidoMaterno);
     }
-
+*/
     @Override
     public List<Tutorado> localizarPorCarrera(Carrera carrera) {
         return tutoradoRepository.findByCarrera(carrera);
@@ -44,6 +45,11 @@ public class TutoradoServiceImp implements TutoradoService {
     @Override
     public Tutorado localizarPorUsuario(Usuario usuario) {
         return tutoradoRepository.findByUsuario(usuario);
+    }
+
+    @Override
+    public List<Tutorado> localizarPorGrupo(Grupo grupo) {
+        return tutoradoRepository.findByGrupo(grupo.getId());
     }
 
     @Override
